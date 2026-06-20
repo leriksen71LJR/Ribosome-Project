@@ -4,9 +4,9 @@
 
 **Maintenance Rule:** Super Grok **must** update this file after every meaningful action, decision, or state change. It must always be current and ready to hand off.
 
-**Last Updated:** 2026-06-20 (local session — Super Grok in Cursor)
+**Last Updated:** 2026-06-20 PM (local session — Super Grok in Cursor)
 
-**Why We're Here:** Technical failure — `Fortress/Project/` was lost in the prior environment. This workspace (`fortress-design`) is the recovery site for Phase 1.2A preparation.
+**Why We're Here:** Technical failure in prior environment — `Fortress/Project/` was lost. Recovered in this workspace (`fortress-design`). **Restoration confirmed by user 2026-06-20.**
 
 ---
 
@@ -17,8 +17,9 @@
 | **Active Role** | **Super Grok** — all Grok can be; not build-agent-only |
 | **Environment** | Local desktop, Cursor (`fortress-design` workspace) |
 | **Prior Environment** | Long Grok cloud session → transitioning to Continue.dev |
-| **Git State** | Repo initialized, **no commits yet** |
-| **User Instruction (this session)** | Be Super Grok; **always maintain this file** |
+| **Git State** | `fc38ff1` base + uncommitted doc fixes and export package (see `git status`) |
+| **Workspace Boundary** | **Docs and export prep only.** Builds run in a **separate external project** — not here. |
+| **User Instruction (this session)** | Be Super Grok; **always maintain this file**; complete items 1 + 2 (STATUS refresh + export prep) |
 
 ## Super Grok Identity
 
@@ -60,10 +61,10 @@ fortress-design/
 ├── Fortress/
 │   ├── README.md                 ← Orientation
 │   ├── PROCESS.md                ← How the project is operated (management layer)
-│   ├── STATUS.md                 ← Living state snapshot (may be stale — see below)
-│   ├── Project/                  ← Agent build workspace (SOURCE OF TRUTH for builds)
+│   ├── STATUS.md                 ← Living state snapshot (refreshed 2026-06-20 PM)
+│   ├── Project/                  ← Agent build workspace (SOURCE OF TRUTH for docs)
 │   ├── Research/                 ← Human-only thinking (agents forbidden)
-│   ├── Export/Phase 1.2A/        ← Prompts only (no zip in repo)
+│   ├── Export/Phase 1.2A/        ← Project/ + Prompts/ + export zip
 │   └── Handoff/HANDOFF.md        ← Cross-chat context
 └── .archive/                     ← Historical snapshots, old shootouts, agent team defs
 ```
@@ -74,37 +75,46 @@ fortress-design/
 
 ### Phase
 
-**Phase 1.2A** — Final documentation tightening before a low-supervision build attempt.
+**Phase 1.2A** — Documentation package **ready for export** to the external build project.
 
 ### What Exists and Works
 
-- `Fortress/Project/AGENTS.md` — 11 rules including Rule 10 (Conflict Resolution) and Rule 11 (Gap Reporting)
-- Core `.docs/`: `ARCHITECTURE.md`, `CODING_STANDARDS.md`, `CODING_DESIGN.md`, `ARCHITECTURE_SECURITY.md`
-- `PHASE_1_1_IMPROVEMENTS.md` stub (ExecuteAsync, build reports)
-- `Evaluation/EvaluationCriteria.md` stub (Deep Documentation Audit format)
-- Reasoning Disclosure prompt (with gamification) in `Export/Phase 1.2A/Prompts/`
-- `PROCESS.md` with export zip rules and `Fortress/Project` boundary definition
-- Strong research backlog and collected agent reasoning in `Research/`
+- `Fortress/Project/` — 10-file documentation package (no `src/` or `tests/` — expected here)
+- `AGENTS.md` — 11 rules; Rule 3 `ExecuteAsync`; Rule 5 `.docs/Builds/` write exception
+- `.docs/HANDLER_INVENTORY.md` — 11 MVP handlers with `IsVisible`, DI, registration
+- `ARCHITECTURE_SECURITY.md` — NuGet packages, Argon2id defaults, SQLCipher init, unlock flows
+- `CODING_DESIGN.md` — full interface contracts; corrected `AddTaskHandler` example
+- `PHASE_1_1_IMPROVEMENTS.md` — build report structure, deviation template, checklist
+- `Evaluation/EvaluationCriteria.md` — per-document checklist, evidence bar, rubric
+- `Export/Phase 1.2A/` — mirrored `Project/`, `Prompts/` (`Build-Prompt.md`, `ReasoningDisclosure-Prompt.md`), zip
+- `Fortress/STATUS.md` — refreshed; reflects docs-only workspace boundary
+- `PROCESS.md`, `Research/`, collected Reasoning Disclosures
 
-### What Is Broken / Incomplete
+### Restoration Status (2026-06-20)
+
+**`Fortress/Project/` is restored and tightened.** All Priority 1 doc gaps from the June 2026 Reasoning Disclosure collation are closed. Package has **not** been validated by a live build — that happens in the external build project.
+
+### Export Package (2026-06-20 PM)
+
+| Item | Path |
+|------|------|
+| Mirror | `Fortress/Export/Phase 1.2A/Project/` (robocopy `/MIR` from source) |
+| Prompts | `Fortress/Export/Phase 1.2A/Prompts/` |
+| Zip | `Fortress/Export/Phase 1.2A/Fortress-Phase1.2A-Updated-2026-06-20.zip` (~31 KB) |
+
+### Remaining Open Issues (Priority 2 — not blocking export)
 
 | Issue | Severity | Notes |
 |-------|----------|-------|
-| `Fortress/Project/` has **docs only** — no source code | High | 8 files; no `src/`, no tests |
-| Referenced zip `Fortress-Phase1.2A-Final-2026-06-21.zip` **not in repo** | High | Cloud handoff says this is the reliable copy |
-| `STATUS.md` dated 2026-06-20 (one day behind cloud handoff) | Low | Needs refresh |
-| No complete handler inventory in docs | High | Agents must infer action list |
-| SQLCipher / Argon2id package names, versions, init missing | High | Security implementation risk |
-| `Components/` vs flat folder diagrams conflict in `ARCHITECTURE.md` | Medium-High | AGENTS.md wins (Rule 10) but noise remains |
-| `AddTaskHandler` example uses `Execute` not `ExecuteAsync` | Medium | Contradicts Phase 1.1 / interface definition |
-| `BUILD_CARTOGRAPHY.md` concept exists but not in `Project/` | Medium | Post-build retrospective artifact missing |
-| `PROCESS.md` has duplicate export-zip sections | Low | Needs cleanup |
-| Phase 1.2 rules partially buried in `Research/` from ".docs bias" period | Medium | Need promotion or cross-reference |
-| No source control strategy decided | Medium | Git has zero commits |
+| `CODING_STANDARDS.md` still high-level | Medium | No measurable thresholds yet |
+| `BUILD_CARTOGRAPHY.md` not in Project | Low | Created in **build project** after first build |
+| `PROCESS.md` duplicate export-zip sections | Low | Cleanup deferred |
+| Bootstrapping note vs diagram in `ARCHITECTURE.md` | Low | Diagram shows `Components/Bootstrapping/` |
+| Data vs Actions model ownership | Low | Both reference `IItem`; workable |
 
-### Agent Readiness (from Research assessment, 2026-06-20)
+### Agent Readiness (updated 2026-06-20)
 
-Agents produce good Reasoning Disclosures and apply Rules 10/11, but are **not yet ready** for reliable low-supervision builds. Priority 1 fixes (Rules 10/11, stubs) are largely done; structural doc gaps remain.
+Priority 1 documentation gaps are closed. Package is **export-ready**. Live build validation is the next gate — **outside this repo**.
 
 ---
 
@@ -128,12 +138,14 @@ Agents produce good Reasoning Disclosures and apply Rules 10/11, but are **not y
 
 ## Recommended Next Steps (Priority Order)
 
-1. **Locate and restore `Fortress/Project/`** from `Fortress-Phase1.2A-Final-2026-06-21.zip` if user has it; add `BUILD_CARTOGRAPHY.md` to Project (not PROCESS.md)
-2. **Close high-severity doc gaps** — handler inventory, SQLCipher packages, reconcile folder diagrams, fix `ExecuteAsync` example
-3. **Refresh `STATUS.md`** to match current reality
-4. **Clean `PROCESS.md`** duplicate sections
-5. **Run Reasoning Disclosure + Build cycle** locally to validate documentation
-6. **Initial git commit** and decide source control strategy for `Project/`
+1. ~~Restore `Fortress/Project/`~~ **DONE**
+2. ~~Close high-severity doc gaps~~ **DONE** (Steps 1–10, 2026-06-20)
+3. ~~Refresh `STATUS.md`~~ **DONE** (2026-06-20 PM)
+4. ~~Prepare Phase 1.2A export~~ **DONE** — mirror + `Fortress-Phase1.2A-Updated-2026-06-20.zip`
+5. **Commit** doc fixes and export package to git (user discretion)
+6. **In external build project:** unzip export → Build via `Build-Prompt.md` → Build Disclosure per `BuildDisclosure.md` (Rule 12)
+7. **Feed back** build report / `BUILD_CARTOGRAPHY.md` if docs need another pass
+8. Priority 2 doc polish (`CODING_STANDARDS.md`, `PROCESS.md` dedup) — as needed
 
 ---
 
@@ -163,15 +175,51 @@ Agents produce good Reasoning Disclosures and apply Rules 10/11, but are **not y
 - Explored full repo; confirmed Project has docs-only, zip missing, no git commits
 - Created this file
 - **User confirmed:** moved here because `Fortress/Project/` was lost; goal is Phase 1.2A preparation
+- **User confirmed:** Project has been restored
+- Verified: 8 doc files in `Fortress/Project/`; git commit `fc38ff1` ("Set up Fortress Design")
+- Collated all agent Reasoning Disclosures; produced Phase 1.2A fix list
+- **Step 1 done:** `AGENTS.md` Rule 3 updated — `ExecuteAsync` is now canonical in Rule 3 (matches Phase 1.1)
+- **Step 2 done:** `CODING_DESIGN.md` `AddTaskHandler` example — `ExecuteAsync`, `IsVisible`, guard clauses, no hardcoded menu number
+- **Step 3 done:** `ARCHITECTURE.md` ADR-001 updated — `ExecuteAsync` + `IsVisible`; original `Execute` marked superseded by Phase 1.1
+- **Step 3b done:** `ARCHITECTURE.md` folder diagram — all components under `Components/`; reconciliation note removed; test mirror added
+- **Step 4 done:** `.docs/HANDLER_INVENTORY.md` — 11 MVP handlers with IsVisible rules, dependencies, ActionsModule registration; linked from `ARCHITECTURE.md` and `AGENTS.md`
+- **Step 5 done:** `CODING_DESIGN.md` — full interface contracts for Security, Infrastructure, Logging; `UserSession`, `KeyDerivationParameters`; `SaveAsync`/`LoadAsync`; fixed `ConfigurationService` naming
+- **Step 6 done:** `ARCHITECTURE_SECURITY.md` — NuGet packages, Argon2id defaults, `fortress.security.json`, SQLCipher `PRAGMA key` init, unlock/wrong-password flows; removed broken `PROJECT_OVERVIEW.md` reference
+- **Step 7 done:** `AGENTS.md` Rule 5 — explicit `.docs/Builds/` write exception; created `.docs/Builds/README.md`
+- **Step 8 done:** `PHASE_1_1_IMPROVEMENTS.md` expanded — build report structure, deviation template, Rules 10/11, handler/security compliance, end-of-build checklist
+- **Step 9 done:** `EvaluationCriteria.md` expanded — per-document checklist, minimum evidence bar, output template, quality rubric
+- **Step 10 done:** `Export/Phase 1.2A/Prompts/Build-Prompt.md` — replaced duplicate Reasoning Disclosure with full Phase 1.2A build prompt
+- **Item 1 done (user request):** `Fortress/STATUS.md` refreshed — P1 resolved, docs-only workspace, export status, build scoped to external project
+- **Item 2 done (user request):** Phase 1.2A export prepared — `robocopy /MIR` to `Export/Phase 1.2A/Project/`; created `Fortress-Phase1.2A-Updated-2026-06-20.zip` (Project + Prompts). **No build in this repo.**
+- **Build Disclosure integrated (user request):** Created `Fortress/Project/BuildDisclosure.md` — post-build mandatory final step. `AGENTS.md` Rule 12 links to it. Output: `REASONING_YYYY-MM-DD.md` returned to stewards. `Prompts/ReasoningDisclosure-Prompt.md` deprecated (redirect stub). Export + zip refreshed.
+- **AgentGamification.md (user request):** Centralized optional gamification from Research Reasoning Disclosure experiment — shared craft layer for build + Build Disclosure. Linked from `AGENTS.md`, `BuildDisclosure.md`, `Build-Prompt.md`, `PHASE_1_1_IMPROVEMENTS.md`.
+- **Report naming (user request):** Build report + reasoning use `YYYY-MM-DD-XXX` sequence — `BUILD-REPORT-YYYY-MM-DD-XXX.md` and `REASONING-YYYY-MM-DD-XXX.md`; multiple runs per day supported; paired `XXX` per build.
+
+### Phase 1.2A Doc Fix Progress (one step at a time)
+
+| Step | Fix | Status |
+|------|-----|--------|
+| 1 | `AGENTS.md` — Rule 3 `Execute` → `ExecuteAsync` (internal conflict) | **Done** |
+| 2 | `CODING_DESIGN.md` — rewrite `AddTaskHandler` example | **Done** |
+| 3 | `ARCHITECTURE.md` — ADR-001 superseded (`ExecuteAsync`) | **Done** |
+| 3b | `ARCHITECTURE.md` — folder diagram under `Components/` | **Done** |
+| 4 | Handler inventory — `.docs/HANDLER_INVENTORY.md` | **Done** |
+| 5 | Interface contracts in `CODING_DESIGN.md` | **Done** |
+| 6 | SQLCipher / Argon2id implementation spec in `ARCHITECTURE_SECURITY.md` | **Done** |
+| 7 | `.docs/Builds/` write exception in `AGENTS.md` + `Builds/README.md` | **Done** |
+| 8 | Expand `PHASE_1_1_IMPROVEMENTS.md` | **Done** |
+| 9 | Expand `Evaluation/EvaluationCriteria.md` | **Done** |
+| 10 | Fix `Export/.../Build-Prompt.md` — real Phase 1.2A build prompt | **Done** |
+| 11 | Refresh `STATUS.md` — docs-only boundary, P1 resolved, export status | **Done** |
+| 12 | Phase 1.2A export — mirror `Project/`, verify prompts, create zip | **Done** |
+| 13 | `BuildDisclosure.md` + `AGENTS.md` Rule 12 — post-build mandatory final step | **Done** |
 
 ### Pending / Not Started
 
-- **PRIMARY:** Rebuild / recover `Fortress/Project/` to Phase 1.2A-ready state
-- Locate `Fortress-Phase1.2A-Final-2026-06-21.zip` (not in repo — may exist on user's machine elsewhere)
-- Documentation gap fixes
-- STATUS.md refresh
-- Build or Reasoning Disclosure run
-- Git initialization with first commit
+- Git commit of doc fixes + export package (uncommitted as of 2026-06-20 PM)
+- Live build validation in **external build project**
+- `BUILD_CARTOGRAPHY.md` — post-build in external project
+- Priority 2 polish (`CODING_STANDARDS.md`, `PROCESS.md` dedup)
 
 ---
 
@@ -187,12 +235,12 @@ Agents produce good Reasoning Disclosures and apply Rules 10/11, but are **not y
 
 ## Maintenance Checklist (Super Grok — Every Session)
 
-- [ ] Update **Last Updated** date
-- [ ] Update **Current State Snapshot** if anything changed
-- [ ] Add entry to **Session Log** for meaningful actions
-- [ ] Update **Recommended Next Steps** if priorities shifted
-- [ ] Update **Pending / Not Started** as work completes
-- [ ] Never end a session with this file stale
+- [x] Update **Last Updated** date
+- [x] Update **Current State Snapshot** if anything changed
+- [x] Add entry to **Session Log** for meaningful actions
+- [x] Update **Recommended Next Steps** if priorities shifted
+- [x] Update **Pending / Not Started** as work completes
+- [x] Never end a session with this file stale
 
 ---
 
