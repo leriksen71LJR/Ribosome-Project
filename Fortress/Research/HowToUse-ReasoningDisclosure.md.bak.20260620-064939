@@ -1,0 +1,64 @@
+# How To Use the Reasoning Disclosure Prompt
+
+**Goal**  
+Get maximum visibility into how an AI coding agent (especially Grok Build) processes and interprets our documentation before it starts building.
+
+This technique is especially useful when:
+- Testing new workflow documents
+- Evaluating documentation clarity
+- Comparing different agents (Grok Build vs Claude vs Codex)
+- Improving the Ribosome Model itself
+
+---
+
+## Recommended Workflow
+
+### Step 1: Prepare the Session
+- Start a **fresh session** with the agent.
+- Do **not** give it a feature request yet.
+- Paste the content from `ReasoningDisclosure-Prompt.md` as your first message.
+
+### Step 2: Let It Complete the Reasoning Phase
+The agent should produce four files in order:
+
+1. `REASONING_01_DocumentProcessing.md`
+2. `REASONING_02_RibosomeModelApplication.md`
+3. `REASONING_03_WorkflowUnderstanding.md`
+4. `REASONING_04_RisksAndAssumptions.md`
+
+Do not interrupt this process. These files are the actual deliverable of this technique.
+
+### Step 3: Review the Reasoning Artifacts
+Pay special attention to:
+- Where it found ambiguity or had to make assumptions
+- How well it understood the **Ribosome Model** (Spec = Data, Workflow = Stateless Process)
+- Whether it respected explicit handler registration vs trying to auto-discover
+- Any gaps it identified in the current workflow documents
+
+### Step 4: Then Give the Actual Task
+Only after the four reasoning files are complete should you give the agent the real build request.
+
+This separation keeps the diagnostic value high.
+
+---
+
+## Tips for Best Results
+
+- Use **Grok Build** first (it currently has the best visible reasoning traces).
+- Run this on **new or significantly changed** documentation to see the impact.
+- Keep the reasoning files — they become excellent material for improving `.docs/`.
+- If the agent tries to skip the reasoning phase and start coding, stop it and remind it of Rule #6 and #7 in the prompt.
+
+---
+
+## When Not to Use This
+
+- Quick exploratory spikes
+- Very small, low-risk changes
+- When you already have high confidence in the current documentation
+
+Use it when you want to **stress-test** the documentation or compare agent behavior.
+
+---
+
+*Part of the Ribosome Model research effort.*
