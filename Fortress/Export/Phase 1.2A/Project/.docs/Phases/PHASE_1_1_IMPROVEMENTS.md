@@ -29,25 +29,11 @@ Task<bool> ExecuteAsync(ActionContext context, CancellationToken cancellationTok
 
 ### 2. Mandatory Build Report
 
-At the end of every build, produce a structured report in `.docs/Builds/`.
+At the end of every build, produce **one combined report** in `.docs/Builds/`.
 
-| Rule | Detail |
-|------|--------|
-| **Location** | `.docs/Builds/` only (the sole `.docs/` write exception — `AGENTS.md` Rule 5) |
-| **Filename** | `BUILD-REPORT-YYYY-MM-DD-XXX.md` — see **Report Naming** below |
-| **Header** | Include agent name, date, and build status (success / partial / blocked) |
+**Full specification:** [BuildDisclosure.md](../../BuildDisclosure.md) — naming, all build-report sections, Build Disclosure sections, Deep Documentation Audit template, and completion checklist.
 
-**Minimum sections (use these exact headings):**
-
-1. **Summary of Work Completed**
-2. **Files Created / Modified**
-3. **Key Implementation Decisions** (grouped by topic: Architecture, Handlers, Security, Storage, DI, Tests)
-4. **Deviations from Documentation** (see section 3 below — use `None` if applicable)
-5. **Deep Documentation Audit** (format per `Evaluation/EvaluationCriteria.md`)
-6. **Open Gaps and Assumptions**
-7. **Recommended Next Steps**
-
-Reports must use grouped sections — not one flat unstructured list.
+Summary: `BUILD-REPORT-YYYY-MM-DD-XXX-{Agent}.md` with build-record sections (what happened) plus Build Disclosure sections (how documentation performed). See **Report Naming** below and section 3 for deviation rules.
 
 ### 3. Explicit Deviation Reporting (Mandatory)
 
@@ -91,39 +77,15 @@ Apply `AGENTS.md` Rules 10 and 11 in the build report:
 
 ### 5. Post-Build Build Disclosure (Mandatory — Final Step)
 
-Per `AGENTS.md` Rule 12, every build **must** end with a Build Disclosure **after** the build report.
+Per `AGENTS.md` Rule 12, Build Disclosure sections are **required in the same file** as the build report. Full section list and template: [BuildDisclosure.md](../../BuildDisclosure.md).
 
-| Rule | Detail |
-|------|--------|
-| **Instructions** | `BuildDisclosure.md` (project root) |
-| **Output** | `REASONING-YYYY-MM-DD-XXX.md` in the project root — same `XXX` as the paired build report |
-| **Timing** | Last artifact — never before code or build report |
-| **Handoff** | Returned to project stewards for documentation analysis |
-
-The build report records **what happened**. The Build Disclosure records **how the documentation performed** during the build. Both are required.
-
-**Optional:** `AgentGamification.md` — shared craft layer for build and disclosure (Pride Points, Cartographer framing). Does not alter mandatory sections.
+**Optional:** [AgentGamification.md](../../AgentGamification.md) — shared craft layer (Pride Points, Cartographer framing). Does not alter mandatory sections.
 
 ---
 
-## Report Naming (Build Report + Reasoning)
+## Report Naming
 
-Both artifacts use **`YYYY-MM-DD-XXX`** where `XXX` is a **3-digit sequence** (`001`, `002`, `003`, …).
-
-| Artifact | Location | Pattern |
-|----------|----------|---------|
-| Build report | `.docs/Builds/` | `BUILD-REPORT-YYYY-MM-DD-XXX.md` |
-| Build Disclosure | project root | `REASONING-YYYY-MM-DD-XXX.md` |
-
-**Sequence rules:**
-
-1. Use today's date in `YYYY-MM-DD`.
-2. Scan existing files with the same prefix and date (e.g. `BUILD-REPORT-2026-06-20-*.md`).
-3. Set `XXX` to the **next unused** 3-digit sequence for that date.
-4. **Same build run:** the build report and reasoning file **must share the same** `YYYY-MM-DD-XXX`.
-5. Do **not** overwrite an existing sequence unless explicitly instructed — create the next sequence instead.
-
-**Examples:** `BUILD-REPORT-2026-06-20-001.md` + `REASONING-2026-06-20-001.md`; second run same day → `-002`.
+See [BuildDisclosure.md](../../BuildDisclosure.md) → **Report Naming**. Pattern: `BUILD-REPORT-YYYY-MM-DD-XXX-{Agent}.md` in `.docs/Builds/`.
 
 ---
 
@@ -153,12 +115,9 @@ Before considering the build complete:
 
 - [ ] All handlers use `ExecuteAsync` with guard clauses
 - [ ] All handlers from `HANDLER_INVENTORY.md` implemented or explicitly deferred with justification
-- [ ] `BUILD-REPORT-YYYY-MM-DD-XXX.md` written to `.docs/Builds/`
-- [ ] **Deviations from Documentation** section is present (even if `None`)
-- [ ] **Deep Documentation Audit** section is present per `Evaluation/EvaluationCriteria.md`
+- [ ] Combined report complete per `BuildDisclosure.md` (all sections, one file)
 - [ ] High-severity assumptions flagged per Rule 11
 - [ ] Unit tests exist for components built (per `AGENTS.md` Rule 4)
-- [ ] `REASONING-YYYY-MM-DD-XXX.md` written per Rule 12 and `BuildDisclosure.md` (final step; same `XXX` as build report)
 
 ---
 
@@ -170,8 +129,8 @@ Phase 1.1/1.2A process compliance is achieved when:
 - Deviations are explicit — not hidden in code or chat
 - `ExecuteAsync` and guard clauses are used on all handlers
 - Core rules (Component Pattern, `IDependencyModule`, Implementation Order) are followed or explicitly deviated with justification
-- Post-build Reasoning Disclosure exists and is ready for steward handoff
+- Combined build report (Part 1 + Part 2 Build Disclosure) exists and is ready for steward handoff
 
 ---
 
-**Last Updated:** 2026-06-20 (post-build Reasoning Disclosure — Rule 12)
+**Last Updated:** 2026-06-21 (build report spec consolidated in `BuildDisclosure.md`)

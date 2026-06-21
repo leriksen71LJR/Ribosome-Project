@@ -1,8 +1,8 @@
 # EvaluationCriteria.md
 
-**Purpose:** Guide agents performing the mandatory **Deep Documentation Audit** in the build report (`AGENTS.md` Rule 8, `PHASE_1_1_IMPROVEMENTS.md`).
+**Purpose:** Extended guidance for the mandatory **Deep Documentation Audit** section in the combined build report.
 
-**Relationship to Build Disclosure:** The Deep Documentation Audit is a **section inside the build report**. The post-build **Build Disclosure** (`BuildDisclosure.md`, `AGENTS.md` Rule 12) produces `REASONING-YYYY-MM-DD-XXX.md` — the separate **final artifact** returned to stewards. Both share the same `XXX` sequence for a given build run. Both are required; they are not interchangeable.
+**Authority for full report structure:** [BuildDisclosure.md](../BuildDisclosure.md) — naming, all build-report sections, Build Disclosure sections, and audit template. This file adds rubric and evaluation depth.
 
 **Restriction:** Report findings only. Do **not** edit documentation files during the audit or disclosure.
 
@@ -10,7 +10,7 @@
 
 ## When This Applies
 
-- **Every build** must include a **Deep Documentation Audit** section in `BUILD-REPORT-YYYY-MM-DD-XXX.md`.
+- **Every build** must include a **Deep Documentation Audit** section in `BUILD-REPORT-YYYY-MM-DD-XXX-{Agent}.md`.
 - A build report **without** this section is **incomplete**.
 - Shallow one-line summaries fail the audit. Minimum evidence requirements below apply.
 
@@ -36,7 +36,7 @@
 | `ARCHITECTURE_SECURITY.md` | Could SQLCipher + Argon2id be implemented from the spec alone? |
 | `HANDLER_INVENTORY.md` | Was the handler list complete? Were `IsVisible` rules sufficient? |
 | `CODING_STANDARDS.md` | Were coding rules measurable enough to verify compliance? |
-| `PHASE_1_1_IMPROVEMENTS.md` | Was the build report structure clear? |
+| `BuildDisclosure.md` | Was the combined report structure clear? |
 | `EvaluationCriteria.md` | (this file) |
 
 Skip documents you did not read. Note skipped docs under **Significant Issues** if they were required for your build.
@@ -148,4 +148,4 @@ Copy this structure into the build report under the heading **Deep Documentation
 
 ---
 
-**Last Updated:** 2026-06-20 (expanded for Phase 1.2A)
+**Last Updated:** 2026-06-21 (combined build report + Build Disclosure — single file)

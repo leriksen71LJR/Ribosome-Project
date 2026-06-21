@@ -6,4 +6,8 @@ Post-build disclosure is now defined in the project package:
 
 → **`BuildDisclosure.md`** (project root, linked from `AGENTS.md` Rule 12)
 
-Run it as the **final step** of every build, after the build report. Output: `REASONING-YYYY-MM-DD-XXX.md` in the project root (same `XXX` as `BUILD-REPORT-YYYY-MM-DD-XXX.md`).
+Build Disclosure sections are the **final step** of every build, appended to the combined report:
+
+→ `.docs/Builds/BUILD-REPORT-YYYY-MM-DD-XXX-{Agent}.md`
+
+Do **not** create a separate `REASONING-*.md` file.

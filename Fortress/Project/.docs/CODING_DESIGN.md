@@ -267,14 +267,32 @@ public interface IKeyDerivationService
 public interface IEncryptionService
 {
     /// <summary>
+    /// True after a key has been successfully derived and stored for per-connection use.
+    /// </summary>
+    bool IsInitialized { get; }
+
+    /// <summary>
     /// Opens or creates the SQLCipher database using the derived key.
+    /// Stores the key in memory for subsequent ApplyKeyAsync calls. Call once per unlock.
     /// </summary>
     Task InitializeDatabaseAsync(string databasePath, byte[] key, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Returns true if the provided key opens the existing database.
+    /// On success, stores the key in memory for subsequent ApplyKeyAsync calls.
     /// </summary>
     bool VerifyKey(string databasePath, byte[] key);
+
+    /// <summary>
+    /// Applies the in-memory derived key to an already-opened connection via PRAGMA key.
+    /// Required because SqliteStorageService opens a new connection on every LoadAsync/SaveAsync.
+    /// </summary>
+    Task ApplyKeyAsync(SqliteConnection connection, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Clears in-memory key material. Called by SessionManager.LockAsync.
+    /// </summary>
+    void Clear();
 }
 
 public interface ISessionService
@@ -290,6 +308,8 @@ public interface ISessionService
     void RecordActivity();
 }
 ```
+
+> **Contract note:** `SqliteConnection` is from `Microsoft.Data.Sqlite`. The encryption service holds the derived key **in memory only** after `InitializeDatabaseAsync` or successful `VerifyKey` — never persist the key or master password. `SessionManager.LockAsync` must call `Clear()`.
 
 ### Model
 
@@ -317,6 +337,9 @@ public class KeyDerivationParameters
 ### Key Flows
 
 - Master password → Argon2id key derivation → SQLCipher encryption key
+- `InitializeDatabaseAsync` or successful `VerifyKey` stores the derived key in `EncryptionService` (`IsInitialized` becomes true)
+- `SqliteStorageService` calls `ApplyKeyAsync` on **every** connection opened after `OpenAsync` (see Infrastructure section)
+- `SessionManager.LockAsync` calls `IEncryptionService.Clear()` before discarding the session
 - Session remains unlocked until manual lock or inactivity timeout (default 15 minutes)
 - Package, initialization, and unlock flows: see `ARCHITECTURE_SECURITY.md` → **Implementation Specification (Phase 1.2A)**
 
@@ -364,6 +387,23 @@ public interface IConfigurationService
 - `SystemConsole` : `IConsole`
 - `ConsoleInputService` : `IInputService`
 - `ConfigurationService` : `IConfigurationService`
+
+### SqliteStorageService — Per-Connection Key Application
+
+`SqliteStorageService` opens a **new** `SqliteConnection` on every `LoadAsync`, `SaveAsync`, and `ExportBackupAsync` call. SQLCipher requires the key on each connection individually.
+
+**Mandatory pattern** after every `OpenAsync`:
+
+```csharp
+await using var connection = new SqliteConnection($"Data Source={databasePath}");
+await connection.OpenAsync(cancellationToken);
+await _encryptionService.ApplyKeyAsync(connection, cancellationToken);
+// ... run queries
+```
+
+**Guard:** If `!_encryptionService.IsInitialized`, throw `InvalidOperationException` — storage must not run while locked.
+
+`ExportBackupAsync` copies the encrypted file and does not open a connection for writes; no `ApplyKeyAsync` needed unless reading from the live database.
 
 ---
 

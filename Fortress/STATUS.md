@@ -86,8 +86,8 @@ No `src/` or `tests/` — expected. Code is built externally.
 
 **Build workflow (mandatory order):**
 1. Build via `Build-Prompt.md` → codebase + tests
-2. Build report → `.docs/Builds/BUILD-REPORT-YYYY-MM-DD-XXX.md`
-3. **Build Disclosure** (final step) → `BuildDisclosure.md` → `REASONING-YYYY-MM-DD-XXX.md` in project root (same `XXX`)
+2. Part 1 build-report sections → `.docs/Builds/BUILD-REPORT-YYYY-MM-DD-XXX-{Agent}.md`
+3. **Build Disclosure** (final step) → Part 2 sections in the **same file** per `BuildDisclosure.md`
 
 ---
 
@@ -95,8 +95,8 @@ No `src/` or `tests/` — expected. Code is built externally.
 
 1. Copy or unzip export into the **build project**
 2. Run **Build** using `Build-Prompt.md`
-3. Agent completes build report, then **Build Disclosure** per `BuildDisclosure.md` (mandatory final step)
-4. Return `REASONING-YYYY-MM-DD-XXX.md` (+ paired build report) to **fortress-design** for steward analysis
+3. Agent completes combined report (Part 1 + Part 2 Build Disclosure) per `BuildDisclosure.md`
+4. Return `BUILD-REPORT-YYYY-MM-DD-XXX-{Agent}.md` to **fortress-design** for steward analysis
 5. Feed doc improvements back here based on disclosure findings
 
 ---

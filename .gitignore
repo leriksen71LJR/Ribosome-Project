@@ -1,0 +1,17 @@
+# fortress-design is docs + export only — block implementation artifacts
+
+# Export mirrors must never contain build output
+Fortress/Export/**/src/
+Fortress/Export/**/tests/
+Fortress/Export/**/obj/
+Fortress/Export/**/bin/
+Fortress/Export/**/*.cs
+Fortress/Export/**/*.csproj
+Fortress/Export/**/*.slnx
+Fortress/Export/**/*.sln
+
+# Project source-of-truth is docs only
+Fortress/Project/src/
+Fortress/Project/tests/
+Fortress/Project/obj/
+Fortress/Project/bin/

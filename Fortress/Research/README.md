@@ -6,7 +6,7 @@
 `Research/` is our private thinking space. It contains:
 - Emerging models and concepts (e.g. Ribosome Model)
 - Boundary definitions and principles
-- Tooling experiments (e.g. Reasoning Disclosure)
+- Tooling experiments (e.g. Reasoning Disclosure, Build Disclosure)
 - Open research questions
 - Backlog of ideas
 
@@ -21,7 +21,8 @@
 
 - `DocumentationAsWorkflow-Research.md` — The Ribosome Model and related research
 - `DocumentationBoundaries.md` — Core boundary principle between Research and Project
-- `ReasoningDisclosure-Prompt.md` — Tool for making agent reasoning visible
+- `ReasoningDisclosure-Prompt.md` — Legacy pre-build disclosure prompt (superseded by `Project/BuildDisclosure.md`)
+- `BuildDisclosure/` — **Post-build** collected build reports from shootouts (single-file format; legacy paired files archived)
 - `Backlog/` — Captured ideas for future phases
 
-_Last updated: June 2026_
+_Last updated: 2026-06-21_

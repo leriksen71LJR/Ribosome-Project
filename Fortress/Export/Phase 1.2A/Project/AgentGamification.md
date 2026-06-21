@@ -1,7 +1,7 @@
 # AgentGamification.md — Optional Craft Layer
 
 **Status:** Optional — does not change mandatory rules in `AGENTS.md` or `BuildDisclosure.md`  
-**Applies to:** The full build session **and** the post-build Build Disclosure  
+**Applies to:** The full build session **and** the post-build Build Disclosure (both in the combined report)  
 **Authority:** If anything here conflicts with `AGENTS.md`, follow `AGENTS.md` (Rule 10)
 
 This file centralizes light gamification for agent craft. It is derived from the Phase 1.2 Reasoning Disclosure experiment and extended to cover implementation work as well as disclosure.
@@ -28,7 +28,7 @@ Fortress documentation is structured and process-heavy. This layer adds positive
 Throughout the build, you are a **Documentation Cartographer** — mapping how documentation behaves as executable instructions while you implement from it.
 
 - During **implementation:** chart what the docs prescribed vs. what you had to infer
-- During **Build Disclosure:** produce the retrospective map for stewards (`REASONING-YYYY-MM-DD-XXX.md`)
+- During **Build Disclosure:** produce the retrospective map for stewards (Build Disclosure sections in the combined report per `BuildDisclosure.md`)
 
 Exploration and precision matter more than speed.
 
@@ -38,8 +38,8 @@ Exploration and precision matter more than speed.
 
 | Phase | When | Where to record |
 |-------|------|-----------------|
-| **Build** | As you work; summarize at end of build report | Optional section in `BUILD-REPORT-YYYY-MM-DD-XXX.md` |
-| **Build Disclosure** | While writing disclosure; summarize at end | Optional section in `REASONING-YYYY-MM-DD-XXX.md` |
+| **Build** | As you work; note craft behaviors as you go | Optional **Craft Reflection** at end of combined report |
+| **Build Disclosure** | While writing Part 2 sections | Same optional section — one **Craft Reflection** at the end |
 
 Skip entirely if it does not help you. No penalty.
 
@@ -90,7 +90,7 @@ Claim only what you actually demonstrated.
 
 ## Optional Output Format
 
-If you use this layer, add this section at the **end** of the relevant file:
+If you use this layer, add this section at the **end** of the combined build report:
 
 ```markdown
 ## Craft Reflection (Optional — AgentGamification.md)
@@ -106,7 +106,7 @@ If you use this layer, add this section at the **end** of the relevant file:
 **Cartographer's Closing Note:** [one sentence — single most important pattern discovered]
 ```
 
-In a full build, you may include **Craft Reflection** in the build report, in `REASONING-YYYY-MM-DD-XXX.md`, or both (disclosure-only points belong in the reasoning file). Use the same `XXX` sequence as the paired build report.
+Use the same `XXX` sequence and agent slug as the combined report filename.
 
 ---
 

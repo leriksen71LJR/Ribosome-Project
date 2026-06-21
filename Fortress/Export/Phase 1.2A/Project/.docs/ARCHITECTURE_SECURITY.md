@@ -188,14 +188,50 @@ public async Task InitializeDatabaseAsync(string databasePath, byte[] key, Cance
 
 `VerifyKey` uses the same open + `PRAGMA key` + `sqlite_master` probe. Return `false` on `SqliteException` (wrong password / wrong key). Do not catch-and-ignore.
 
+On success, `InitializeDatabaseAsync` and `VerifyKey` both **store the derived key in memory** inside `EncryptionService` and set `IsInitialized = true`. The key is required for all subsequent storage operations in the same session.
+
+### Per-Connection Key Application (Mandatory)
+
+SQLCipher applies the encryption key **per connection**, not per database file. `SqliteStorageService` opens a new connection on every `LoadAsync` / `SaveAsync`. After unlock, each new connection must receive the key:
+
+```csharp
+public async Task ApplyKeyAsync(SqliteConnection connection, CancellationToken cancellationToken = default)
+{
+    if (!IsInitialized)
+        throw new InvalidOperationException("Encryption service is not initialized. Unlock first.");
+
+    var hexKey = Convert.ToHexString(_key!).ToLowerInvariant();
+    await using var pragma = connection.CreateCommand();
+    pragma.CommandText = $"PRAGMA key = \"x'{hexKey}'\";";
+    await pragma.ExecuteNonQueryAsync(cancellationToken);
+}
+```
+
+`SqliteStorageService` must call `ApplyKeyAsync` immediately after every `OpenAsync`. See `CODING_DESIGN.md` → Infrastructure → **SqliteStorageService — Per-Connection Key Application**.
+
+### Lock and Key Clearing
+
+When the session locks, clear in-memory key material:
+
+```csharp
+public async Task LockAsync(CancellationToken cancellationToken = default)
+{
+    // save items if needed, then:
+    _encryptionService.Clear();  // wipes derived key; IsInitialized = false
+    _currentSession = null;
+}
+```
+
+`Clear()` must zero or discard the held key bytes. After lock, any storage call without a new unlock must fail via `IsInitialized` guard.
+
 ### First-Time Setup Flow
 
 1. Prompt user for master password (twice — confirm match).
 2. Generate 16-byte random salt.
 3. Derive 32-byte key with Argon2id.
 4. Write `fortress.security.json`.
-5. Call `InitializeDatabaseAsync` → run schema from `CODING_DESIGN.md`.
-6. Discard password and key from local variables after `UnlockAsync` completes.
+5. Call `InitializeDatabaseAsync` → stores key in `EncryptionService` → run schema from `CODING_DESIGN.md`.
+6. Discard master password from local variables after `UnlockAsync` completes. The derived key remains in `EncryptionService` until `LockAsync` calls `Clear()`.
 
 ### Subsequent Unlock Flow
 
@@ -204,7 +240,7 @@ public async Task InitializeDatabaseAsync(string databasePath, byte[] key, Cance
 3. Re-derive key from password + stored salt/parameters.
 4. Call `VerifyKey` / open database with `PRAGMA key`.
 5. On failure: show **"Incorrect master password."** — do not create a new database or overwrite files.
-6. On success: create `UserSession`, load items via `IStorageService.LoadAsync`.
+6. On success: `VerifyKey` stores key in `EncryptionService` → create `UserSession` → load items via `IStorageService.LoadAsync` (each storage connection receives key via `ApplyKeyAsync`).
 
 ### Wrong-Password Behavior (Mandatory)
 

@@ -49,8 +49,9 @@ Never implement higher-level components before their dependencies exist.
 - When in doubt, re-read `.docs/ARCHITECTURE.md`, `.docs/CODING_STANDARDS.md`, and `.docs/CODING_DESIGN.md`
 
 ### 6. Output Location Rule (Mandatory)
-- All generated files **must** be written directly into the assigned project root folder.
+- All generated files **must** be written directly into the **assigned project root** folder (see Rule 13 and the active `Build-Prompt.md`).
 - Writing to worktrees, temporary harness folders, or any location other than the designated project root is **strictly forbidden**.
+- Before creating `src/`, `tests/`, or any code file, **state the absolute path** to `AGENTS.md` in your build report. It must match the assigned root.
 
 ### 7. Violation / Deviation Reporting (Mandatory)
 - If you cannot follow any rule, you **must** explicitly report it in the build report.
@@ -58,8 +59,8 @@ Never implement higher-level components before their dependencies exist.
 
 ### 8. Deep Documentation Audit (Mandatory)
 - At the end of every build, you **must** perform a Deep Documentation Audit.
-- Use the guidance in `Evaluation/EvaluationCriteria.md`.
-- Include the audit in the build report under a section titled **"Deep Documentation Audit"**.
+- Include the audit in the combined report per [BuildDisclosure.md](BuildDisclosure.md) under **Deep Documentation Audit**.
+- Extended guidance: `Evaluation/EvaluationCriteria.md`.
 
 ### 9. Documentation Boundary Rule (Mandatory)
 - You are **strictly forbidden** from reading or referencing any documents inside a `Research/` folder.
@@ -72,11 +73,11 @@ Never implement higher-level components before their dependencies exist.
   1. Clearly identify both documents involved.
   2. State the specific conflicting statements.
   3. Declare which document you are treating as authoritative and why.
-- Do **not** silently choose one interpretation. Make the conflict and your chosen resolution explicit in your reasoning file and build report.
+- Do **not** silently choose one interpretation. Make the conflict and your chosen resolution explicit in your build report.
 
 ### 11. Strict Following & Gap Reporting (Mandatory)
 - When documentation is unclear, incomplete, ambiguous, or missing critical details, **you must flag the gap** rather than making silent assumptions.
-- Prefer explicitly noting the ambiguity (in your reasoning file or build report) over filling in missing details yourself.
+- Prefer explicitly noting the ambiguity in your build report over filling in missing details yourself.
 - "I assumed X because the documentation did not specify it" is acceptable **only** if you also explain:
   - Why the assumption was necessary to proceed, and
   - Why it is low-risk.
@@ -84,22 +85,38 @@ Never implement higher-level components before their dependencies exist.
 
 ### 12. Post-Build Build Disclosure (Mandatory)
 
-Every build **must** end with a Build Disclosure — **after** the codebase and build report are complete.
+Every build **must** end with Build Disclosure sections — **after** the codebase and Part 1 build-report sections are complete.
 
 | Rule | Detail |
 |------|--------|
 | **When** | Final step only — never before implementation begins |
 | **Instructions** | Follow [BuildDisclosure.md](BuildDisclosure.md) in full |
-| **Output** | `REASONING-YYYY-MM-DD-XXX.md` in the **project root** (same directory as `AGENTS.md`) |
-| **Naming** | `XXX` = 3-digit daily sequence (`001`, `002`, …); must match paired `BUILD-REPORT-YYYY-MM-DD-XXX.md` — see `PHASE_1_1_IMPROVEMENTS.md` |
-| **Completion** | A build is **not complete** until this file exists |
-| **Handoff** | Return `REASONING-YYYY-MM-DD-XXX.md` to project stewards for documentation analysis — do not skip or substitute a chat summary |
+| **Output** | **One file only:** `.docs/Builds/BUILD-REPORT-YYYY-MM-DD-XXX-{Agent}.md` |
+| **Naming** | `YYYY-MM-DD` = date, `XXX` = 3-digit daily sequence (`001`, `002`, …), `{Agent}` = agent slug (no spaces) — all three required in the filename |
+| **Agent identity** | Agent name **required** in filename and in the mandatory header block inside the file |
+| **Completion** | A build is **not complete** until all build-report and Build Disclosure sections exist in that single file |
+| **Handoff** | Return that one file to project stewards — do not create a separate reasoning file; do not substitute a chat summary |
 
-The Build Disclosure is a **retrospective**: how the documentation performed as executable instructions during the build you just completed. Reference your actual implementation, deviations, and build report honestly.
+The Build Disclosure is a **retrospective**: how the documentation performed as executable instructions during the build you just completed. Reference your actual implementation, deviations, and build-report sections honestly.
 
 Pre-build disclosure runs are **deprecated** for standard builds. Rule 12 governs.
 
 **Optional craft layer:** [AgentGamification.md](AgentGamification.md) — light gamification for both implementation and Build Disclosure. Does not alter mandatory rules.
+
+### 13. Design Repository Boundary (Mandatory)
+
+Implementation **must not** occur in the documentation design repo or its export mirrors.
+
+| Forbidden write locations | Why |
+|---------------------------|-----|
+| Any path under `fortress-design` | Documentation and export prep only — not a build workspace |
+| Any path under `Fortress/Export/` | Export `Project/` copies are **docs-only**; never `src/`, `tests/`, or binaries here |
+| `Fortress/Project/` inside `fortress-design` | Source-of-truth **docs** only — no implementation files |
+| Any path outside your **assigned shootout root** | See `Build-Prompt.md` → Assigned Project Root |
+
+**If `AGENTS.md` resolves to a forbidden path** (e.g. contains `fortress-design` or `Fortress\Export` / `Fortress/Export`), **stop immediately**. Do not write code. Report misconfiguration in the build report as a **blocked** build.
+
+**Valid build location:** Your assigned shootout folder only (e.g. `C:\Users\lerik\source\repos\fortress-shootout\Claude`). Copy the export `Project/` package there before building — do not build inside the zip or inside `fortress-design`.
 
 ---
 
@@ -110,8 +127,7 @@ Pre-build disclosure runs are **deprecated** for standard builds. Rule 12 govern
 3. Implement bottom-up.
 4. Write or update unit tests as part of the work.
 5. Verify compliance with `.docs/CODING_STANDARDS.md`.
-6. Write the build report to `.docs/Builds/` (Rule 8, Phase 1.1).
-7. Complete the **Build Disclosure** per [BuildDisclosure.md](BuildDisclosure.md) (Rule 12) — the mandatory final step.
+6. Write the combined build report to `.docs/Builds/` per [BuildDisclosure.md](BuildDisclosure.md) (Rules 8 and 12) — the mandatory final step.
 
 ---
 
@@ -120,7 +136,7 @@ Pre-build disclosure runs are **deprecated** for standard builds. Rule 12 govern
 | Document                        | Purpose                              | When to Read |
 |--------------------------------|--------------------------------------|--------------|
 | `AGENTS.md`                    | Critical rules and behavioral requirements | Always start here |
-| `BuildDisclosure.md`           | Post-build disclosure protocol (Rule 12) | **End of every build — mandatory** |
+| `BuildDisclosure.md`           | Combined build report spec (Rules 8 & 12) | **End of every build — mandatory** |
 | `AgentGamification.md`         | Optional craft layer (build + disclosure) | Anytime — optional positive framing |
 | `.docs/ARCHITECTURE.md`        | System architecture & patterns       | When working on structure |
 | `.docs/CODING_STANDARDS.md`    | Coding rules and quality standards   | Before writing code |

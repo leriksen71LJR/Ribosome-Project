@@ -2,16 +2,38 @@
 
 You are a build agent for **Fortress** — a secure .NET 8 console application.
 
-Your objective is to **implement a working MVP** from the project documentation with full process compliance: correct architecture, all required handlers, encrypted storage, unit tests, a complete build report, and a **post-build Build Disclosure** (`AGENTS.md` Rule 12, `BuildDisclosure.md`).
+Your objective is to **implement a working MVP** from the project documentation with full process compliance: correct architecture, all required handlers, encrypted storage, unit tests, and a **combined build report** (Part 1 build report + Part 2 Build Disclosure in one file — `AGENTS.md` Rule 12, `BuildDisclosure.md`).
 
 ---
 
-## Project Root
+## Assigned Project Root (Mandatory — read first)
 
-The **project root** is the directory containing `AGENTS.md`.
+**You must build only in the assigned shootout folder below** — not in `fortress-design`, not in `Fortress/Export/`, not in any IDE workspace root that differs from this path.
 
-All generated code, tests, and reports **must** be written inside this directory.  
-Do **not** write to worktrees, temp folders, or paths outside the project root.
+**Assigned root for this session (replace if your orchestrator specifies otherwise):**
+
+```
+C:\Users\lerik\source\repos\fortress-shootout\Claude
+```
+
+**Phase 1.2A shootout paths (use only the one assigned to you):**
+
+| Agent | Assigned project root |
+|-------|------------------------|
+| Claude | `C:\Users\lerik\source\repos\fortress-shootout\Claude` |
+| Grok Build | `C:\Users\lerik\source\repos\fortress-shootout\Grok` |
+| Codex | `C:\Users\lerik\source\repos\fortress-shootout\Cortex` |
+
+The **project root** is the assigned directory above. It must be the directory containing `AGENTS.md` for this build.
+
+### Pre-flight check (required before any code)
+
+1. Resolve the **absolute path** to `AGENTS.md`.
+2. Confirm it is **inside** your assigned root (not `fortress-design`, not `Fortress/Export/`).
+3. Record that path in the build report header. If it does not match, **stop** — build is **blocked** per `AGENTS.md` Rule 13.
+
+All generated code, tests, and reports **must** be written inside the assigned root only.  
+Do **not** write to worktrees, temp folders, parent repos, or export mirrors.
 
 You are **forbidden** from reading anything in a `Research/` folder.
 
@@ -86,25 +108,21 @@ Build bottom-up per `AGENTS.md` Rule 1:
 - All components, handlers, security, storage, bootstrapping
 - Solution builds and tests pass
 
-### 2. Build report
+### 2. Build report (one file — mandatory)
 
-Write `.docs/Builds/BUILD-REPORT-YYYY-MM-DD-XXX.md` with all sections required by `PHASE_1_1_IMPROVEMENTS.md` (see **Report Naming** — `XXX` = daily sequence):
+Follow **`BuildDisclosure.md` in full** — the single specification for the combined report.
 
-- Summary of Work Completed
-- Files Created / Modified
-- Key Implementation Decisions
-- Deviations from Documentation
-- **Deep Documentation Audit** (per `Evaluation/EvaluationCriteria.md`)
-- Open Gaps and Assumptions
-- Recommended Next Steps
+Create **exactly one file:** `.docs/Builds/BUILD-REPORT-YYYY-MM-DD-XXX-{Agent}.md`
 
-### 3. Build Disclosure (final step)
+- `YYYY-MM-DD` — today's date
+- `XXX` — 3-digit daily sequence (`001`, `002`, …)
+- `{Agent}` — your agent slug (no spaces, e.g. `Claude`, `GrokBuild`)
 
-After the build report is written, follow `BuildDisclosure.md` and produce:
+**Do not** create a second file. **Do not** create `REASONING-*.md`.
 
-- `REASONING-YYYY-MM-DD-XXX.md` in the **project root** (same `XXX` as the build report)
+`BuildDisclosure.md` defines: report header, all 7 build-report sections (including deviations and Deep Documentation Audit), all Build Disclosure sections, Self-Assessment, and the completion checklist.
 
-This file is returned to project stewards for documentation analysis. **Do not skip it.**
+Return this one file to project stewards.
 
 ---
 
@@ -119,8 +137,7 @@ This file is returned to project stewards for documentation analysis. **Do not s
 7. Wire `Program.cs`: `Batteries_V2.Init()`, modules, unlock flow, main menu loop
 8. Write unit tests mirroring `tests/.../Components/` structure
 9. Verify build + tests pass
-10. Write build report with honest Deep Documentation Audit
-11. Complete **Build Disclosure** per `BuildDisclosure.md` (`AGENTS.md` Rule 12)
+10. Write the combined report per `BuildDisclosure.md` (`AGENTS.md` Rules 8 & 12)
 
 ---
 
@@ -132,11 +149,9 @@ The build is **complete** only when:
 - [ ] Tests pass
 - [ ] All 11 handlers implemented (or explicitly deferred with deviation report)
 - [ ] SQLCipher + Argon2id used per security spec
-- [ ] `BUILD-REPORT-YYYY-MM-DD-XXX.md` exists with Deep Documentation Audit
-- [ ] All deviations explicitly listed (or stated as `None`)
-- [ ] `REASONING-YYYY-MM-DD-XXX.md` exists in the project root (post-build retrospective; same `XXX`)
+- [ ] Combined report complete per `BuildDisclosure.md` completion checklist (one file; no `REASONING-*.md`)
 
-After `REASONING-YYYY-MM-DD-XXX.md` is written per `BuildDisclosure.md`, **stop**. Do not begin unrelated work.
+After the report is complete, **stop**. Do not begin unrelated work.
 
 ---
 
