@@ -4,7 +4,9 @@
 
 **Maintenance Rule:** Super Grok **must** update this file after every meaningful action, decision, or state change. It must always be current and ready to hand off.
 
-**Last Updated:** 2026-06-21 (Lead Researcher chat handoff — memory capsule)
+**Memory Capsule:** Executive handoff layer → [`Fortress/Handoff/MemoryCapsule/CURRENT.md`](Fortress/Handoff/MemoryCapsule/CURRENT.md). Update `CURRENT.md` alongside this file; archive before retiring a chat. See [`Fortress/Handoff/MemoryCapsule/README.md`](Fortress/Handoff/MemoryCapsule/README.md).
+
+**Last Updated:** 2026-06-21 (disclosure analysis revised — self-contained + §9 Ribosome essay)
 
 **Why We're Here:** Technical failure in prior environment — `Fortress/Project/` was lost. Recovered in this workspace (`fortress-design`). **Restoration confirmed by user 2026-06-20.**
 
@@ -18,7 +20,7 @@
 | **Lead Researcher (other Grok chat)** | **Retiring current chat** (context strain, 2026-06-21). New Research chat incoming with **memory capsule**. Role unchanged: composite synthesis, `Research/`, Phase 2 planning with user. |
 | **Environment** | Local desktop, Cursor (`fortress-design` workspace) |
 | **Prior Environment** | Long Grok cloud session → transitioning to Continue.dev |
-| **Git State** | `fc38ff1` base + uncommitted doc fixes and export package (see `git status`) |
+| **Git State** | `99e010b` — **Phase 1.2A Complete** (committed 2026-06-21). Working tree clean. |
 | **Workspace Boundary** | **Docs and export prep only.** Builds run in a **separate external project** — not here. |
 | **User Instruction (this session)** | Be Super Grok; **always maintain this file**; complete items 1 + 2 (STATUS refresh + export prep) |
 
@@ -100,6 +102,12 @@ No conflict if Research owns synthesis and Super Grok owns **implementation of d
 
 New Research chat should read capsule + `handoff-audit.md` + `Fortress/Research/README.md`. No dependency on the retired chat transcript.
 
+**Research capsule received (2026-06-21):** `Research-Memory-Capsule-2026-06-21.md` (user Downloads / research handoff export). Steward read in full — technical + personal. Recorded in `MemoryCapsule/CURRENT.md` → "What Steward Must Honor." **Note:** Research Section 7 lists Item 1 as active; Steward completed Item 1 before capsule finalization.
+- **New Research chat ready (2026-06-21):** Re-read capsule with deliberate attention to Sections 3, 6, 9. Council analysis: capsule as scar map + protective artifact; emotional layer load-bearing; rules born from pain not policy. Steward response recorded in chat; operational commitment — foreground work, no process theater, honor split without treating Research as "the slow one."
+- **Steward executive summary for Research (2026-06-21):** `Fortress/Handoff/Steward-Executive-Summary-2026-06-21.md` — today's work, current state, Item 1 done, Item 2 next.
+- **End of day (2026-06-21):** User done. `CURRENT.md` + handoff current. Next: Item 2 when user returns.
+- **Build disclosure analysis revised (2026-06-21):** `Fortress/Research/BuildDisclosure/Build-Agent-Disclosure-Responses-2026-06-21.md` — self-contained Part I + Part II appendices; multi-agent review fixes (Codex encryption disclosure gap, Era A provenance); §8 mechanics tables; **§9 expansive practical implications** for Ribosome + Documentation-as-Pseudocode; Collected/ expanded (Grok+Codex REASONING 002, Codex BUILD 002). Plan: `PLAN-Disclosure-Analysis-Revision-2026-06-21.md` (executed).
+
 ---
 
 ## Project in One Paragraph
@@ -112,7 +120,11 @@ Fortress is a **documentation-first AI agent training system**. The real product
 
 ```
 fortress-design/
-├── handoff-audit.md              ← THIS FILE (always current)
+├── handoff-audit.md              ← THIS FILE (detailed log — always current)
+├── Fortress/Handoff/MemoryCapsule/
+│   ├── CURRENT.md                ← Executive capsule (resume Super Grok here)
+│   ├── README.md                 ← Capsule protocol + chat retirement steps
+│   └── Archive/                  ← Dated snapshots when rotating chats
 ├── Fortress-Handoff-2026-06-21.md ← Prior cloud-session handoff (historical)
 ├── Fortress/
 │   ├── README.md                 ← Orientation
@@ -287,10 +299,12 @@ Priority 1 documentation gaps are closed. Package is **export-ready**. Live buil
 
 ### Pending / Not Started
 
-- Git commit of doc fixes + export package (user deferred agent-naming commit tweaks to next time)
+- ~~Git commit of doc fixes + export package~~ **Done** — `99e010b` "Phase 1.2A Complete" (2026-06-21)
 - **Phase 1.2A shootout steward analysis complete (2026-06-21):** All 3 agents in `fortress-shootout 1.2A.zip` — Claude 001, Grok 002, Cortex 002. See session log.
 - **Doc fix Item 1 done (2026-06-21):** `IEncryptionService` completed in `CODING_DESIGN.md` + per-connection pattern in `ARCHITECTURE_SECURITY.md` per Research spec. Export mirrored + zip refreshed.
 - **Lead Researcher chat handoff (2026-06-21):** User retiring strained Research chat; outgoing agent creating memory capsule. New Research chat resumes from capsule + durable docs. Super Grok workspace continues.
+- **Git commit (2026-06-21):** `99e010b` "Phase 1.2A Complete" — doc fixes, combined `BuildDisclosure.md`, Item 1 `IEncryptionService`, export package. Working tree clean.
+- **Super Grok memory capsule system (2026-06-21):** `Fortress/Handoff/MemoryCapsule/` — `CURRENT.md`, `README.md`, `TEMPLATE.md`, `Archive/SuperGrok-2026-06-21.md`. New chat resume: read `handoff-audit.md` + `CURRENT.md`.
 - Doc fix queue — next item when user returns (Item 2: archive semantics)
 - Next builds: combined `BUILD-REPORT-YYYY-MM-DD-XXX-{Agent}.md` per `BuildDisclosure.md`
 - `BUILD_CARTOGRAPHY.md` — post-build in external project
@@ -315,7 +329,9 @@ Priority 1 documentation gaps are closed. Package is **export-ready**. Live buil
 - [x] Add entry to **Session Log** for meaningful actions
 - [x] Update **Recommended Next Steps** if priorities shifted
 - [x] Update **Pending / Not Started** as work completes
-- [x] Never end a session with this file stale
+- [x] Refresh [`Fortress/Handoff/MemoryCapsule/CURRENT.md`](Fortress/Handoff/MemoryCapsule/CURRENT.md) when state changes materially
+- [x] Before **retiring this chat**: final `CURRENT.md` refresh + copy to `Archive/SuperGrok-YYYY-MM-DD.md`
+- [x] Never end a session with this file or `CURRENT.md` stale
 
 ---
 

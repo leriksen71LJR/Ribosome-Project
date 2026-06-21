@@ -8,13 +8,17 @@
 
 **Not the same as:** `Research/ReasoningDisclosure/Collected/` — that folder holds **legacy pre-build** disclosure exercises (`REASONING_YYYY-MM-DD.md` underscore format).
 
+**Cross-agent analysis:** [Build-Agent-Disclosure-Responses-2026-06-21.md](Build-Agent-Disclosure-Responses-2026-06-21.md) — **self-contained** synthesis: Era A/B/C naming, evidence excerpts (Part II), steward implications (§7), and expansive Ribosome / Documentation-as-Pseudocode analysis (§9). `Collected/` remains raw archive; reading the analysis doc alone is sufficient for Research review.
+
 ---
 
 ## Inventory
 
 | Date | Agent | Seq | Outcome | Combined report | Legacy reasoning (if any) | Shootout path | Notes |
 |------|-------|-----|---------|-----------------|---------------------------|---------------|-------|
-| 2026-06-20 | Claude | 001 | success | [BUILD-REPORT-2026-06-20-001.md](Collected/BUILD-REPORT-2026-06-20-001.md) | [REASONING-2026-06-20-001-Claude.md](Collected/REASONING-2026-06-20-001-Claude.md) | `fortress-shootout\Claude` | **Legacy paired format.** First full Phase 1.2A validation build. Source: `Claude 1.2.zip`. Research analysis: `Claude-Phase1.2-Full-Quantum-Analysis-2026-06-21.md`. |
+| 2026-06-20 | Claude | 001 | success | [BUILD-REPORT-2026-06-20-001.md](Collected/BUILD-REPORT-2026-06-20-001.md) | [REASONING-2026-06-20-001-Claude.md](Collected/REASONING-2026-06-20-001-Claude.md) | `fortress-shootout\Claude` | **Legacy paired format.** First full Phase 1.2A validation build. |
+| 2026-06-20 | GrokBuild | 002 | success | [BUILD-REPORT-2026-06-20-002-GrokBuild.md](Collected/BUILD-REPORT-2026-06-20-002-GrokBuild.md) | [REASONING-2026-06-20-002-GrokBuild.md](Collected/REASONING-2026-06-20-002-GrokBuild.md) | `fortress-shootout\Grok` | Renamed copy in Collected (avoids Codex 002 filename clash). |
+| 2026-06-20 | Codex | 002 | success (warnings) | [BUILD-REPORT-2026-06-20-002.md](Collected/BUILD-REPORT-2026-06-20-002.md) | [REASONING-2026-06-20-002-Codex.md](Collected/REASONING-2026-06-20-002-Codex.md) | `fortress-shootout\Cortex` | Rule 4 partial coverage; encryption isoform (static ApplyKey). |
 
 ---
 
