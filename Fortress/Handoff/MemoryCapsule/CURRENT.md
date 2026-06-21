@@ -29,7 +29,7 @@ Phase 1.2A is **complete and validated**: three independent shootout builds (Cla
 | Field | Value |
 |-------|-------|
 | Phase | 1.2A complete; not 1.2AA; Phase 2 after one more build round |
-| Git | `99e010b` committed; `handoff-audit.md` may have unstaged steward updates |
+| Git | `master` → `https://github.com/leriksen71LJR/Ribosome-Project.git` (remote: Ribosome-Project) |
 | Export | `Fortress/Export/Phase 1.2A/` + `Fortress-Phase1.2A-Updated-2026-06-20.zip` |
 | Last shootout | `fortress-shootout 1.2A.zip` — Claude 001, Grok 002, Cortex 002 (legacy two-file reports) |
 | Build report format | `BUILD-REPORT-YYYY-MM-DD-XXX-{Agent}.md` — all sections in `BuildDisclosure.md` |

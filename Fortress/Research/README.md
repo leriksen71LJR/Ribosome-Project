@@ -19,7 +19,10 @@
 
 ## Current Key Documents
 
-- `DocumentationAsWorkflow-Research.md` — The Ribosome Model and related research
+- `Ribosome-Model.md` — North star metaphor
+- `Ribosome/Experiments/` — Restructuring experiments (e.g. **Experiment 03** composite `.docs/` layout)
+- `BuildDisclosure/Build-Agent-Disclosure-Responses-2026-06-21.md` — Shootout disclosure synthesis + §9 Ribosome/pseudocode implications
+- `DocumentationAsWorkflow-Research.md` — Extended Ribosome / workflow research
 - `DocumentationBoundaries.md` — Core boundary principle between Research and Project
 - `ReasoningDisclosure-Prompt.md` — Legacy pre-build disclosure prompt (superseded by `Project/BuildDisclosure.md`)
 - `BuildDisclosure/` — **Post-build** collected build reports from shootouts (single-file format; legacy paired files archived)

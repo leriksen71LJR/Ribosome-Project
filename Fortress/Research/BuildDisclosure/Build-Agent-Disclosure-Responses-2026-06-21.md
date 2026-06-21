@@ -397,7 +397,7 @@ Phase 1.2A demonstrated that **Documentation-as-Pseudocode works where authors w
 
 ## 10. Recommended Next Steps
 
-1. **Research** — Draft Decision Procedures from §9.5 seeds; use Appendix D.8.  
+1. **Research** — Draft Decision Procedures from §9.5 seeds; use Appendix D.4. Align with [Experiment 03 composite `.docs/` layout](../Ribosome/Experiments/Experiment-03-Composite-Restructuring-2026-06-21.md) (`Seams/`, `Core/`, `Workflow/`).  
 2. **Steward** — P2 archive semantics; then Exit/Modules procedures; Era C spec adds Invention Summary table.  
 3. **Next shootout** — Era C reports; measure §9.5 regression table.  
 4. **Corpus** — Full Era B pairs in `Collected/` (Grok report as `BUILD-REPORT-2026-06-20-002-GrokBuild.md` to avoid Codex 002 clash).

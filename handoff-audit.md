@@ -20,7 +20,7 @@
 | **Lead Researcher (other Grok chat)** | **Retiring current chat** (context strain, 2026-06-21). New Research chat incoming with **memory capsule**. Role unchanged: composite synthesis, `Research/`, Phase 2 planning with user. |
 | **Environment** | Local desktop, Cursor (`fortress-design` workspace) |
 | **Prior Environment** | Long Grok cloud session → transitioning to Continue.dev |
-| **Git State** | `99e010b` — **Phase 1.2A Complete** (committed 2026-06-21). Working tree clean. |
+| **Git State** | On `master`, tracking **`Ribosome-Project`** remote. Repo: `https://github.com/leriksen71LJR/Ribosome-Project.git` |
 | **Workspace Boundary** | **Docs and export prep only.** Builds run in a **separate external project** — not here. |
 | **User Instruction (this session)** | Be Super Grok; **always maintain this file**; complete items 1 + 2 (STATUS refresh + export prep) |
 
@@ -107,6 +107,8 @@ New Research chat should read capsule + `handoff-audit.md` + `Fortress/Research/
 - **Steward executive summary for Research (2026-06-21):** `Fortress/Handoff/Steward-Executive-Summary-2026-06-21.md` — today's work, current state, Item 1 done, Item 2 next.
 - **End of day (2026-06-21):** User done. `CURRENT.md` + handoff current. Next: Item 2 when user returns.
 - **Build disclosure analysis revised (2026-06-21):** `Fortress/Research/BuildDisclosure/Build-Agent-Disclosure-Responses-2026-06-21.md` — self-contained Part I + Part II appendices; multi-agent review fixes (Codex encryption disclosure gap, Era A provenance); §8 mechanics tables; **§9 expansive practical implications** for Ribosome + Documentation-as-Pseudocode; Collected/ expanded (Grok+Codex REASONING 002, Codex BUILD 002). Plan: `PLAN-Disclosure-Analysis-Revision-2026-06-21.md` (executed).
+- **GitHub (2026-06-21):** Workspace on `Ribosome-Project` remote (`leriksen71LJR/Ribosome-Project`). User confirmed "we are in github."
+- **Research Experiment 03 imported (2026-06-21):** `Fortress/Research/Ribosome/Experiments/Experiment-03-Composite-Restructuring-2026-06-21.md` — composite doc restructuring (Core/Workflow/Seams/Quality/Perspectives/Archive); cross-linked from disclosure §10, `Ribosome-Model.md`, `Research/README.md`.
 
 ---
 

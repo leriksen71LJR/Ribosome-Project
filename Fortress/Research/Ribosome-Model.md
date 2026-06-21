@@ -57,6 +57,8 @@ This gives us a path toward more reliable, auditable, and evolvable agent behavi
 
 This model is still **emerging research**. It is not yet fully implemented in the build-facing documentation (`Project/`). The goal of Phase 2 is to begin translating this model into concrete workflow documents, procedures, and enforcement mechanisms.
 
+**Related Research:** [Experiment 03 — Composite Restructuring](Ribosome/Experiments/Experiment-03-Composite-Restructuring-2026-06-21.md) proposes a `.docs/` layout (Core / Workflow / Seams / Quality / Perspectives / Archive) informed by Build Disclosure shootout evidence.
+
 ---
 
 *This document is the north star for the Ribosome Model. It lives in `Research/` and must not be given to build agents.*
