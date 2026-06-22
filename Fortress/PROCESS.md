@@ -91,7 +91,17 @@ Most productive sessions follow this pattern:
 - **Rule 10 (Conflict Resolution)**: When documents conflict, `AGENTS.md` is the highest authority. The conflict and resolution must be explicitly stated.
 - **Rule 11 (Gap Reporting)**: Agents must flag gaps and ambiguities rather than making silent assumptions. High-risk assumptions must be prominently reported.
 - **No silent fixes**: If documentation is wrong or incomplete, it should be fixed in the source documents, not worked around in code.
-- **Chat memory minimization**: After every significant session, the state of the project must be captured in `STATUS.md` and other living documents so future sessions do not require recalling previous chat context.
+- **Chat memory minimization**: After every significant session, the state of the project must be captured in `STATUS.md`, `Logs/`, and other living documents so future sessions do not require recalling previous chat context.
+
+### Session logging (`Logs/`)
+
+A `Logs/` folder holds daily work summaries, decision records, and process notes.
+
+- **Naming:** `{Topic}-{YYYY-MM-DD}-{HHmm}.md` in 24-hour format (e.g. `Daily-Work-Summary-2026-06-21-1251.md`, `Phase2-Decisions-2026-06-21-1430.md`).
+- **When:** Significant work completed, key decisions made, or end of a focused session.
+- **Goal:** Preserve context, decisions, and progress without relying solely on chat history.
+
+See [`Logs/README.md`](Logs/README.md). Logs complement `STATUS.md`, `handoff-audit.md`, and `Handoff/MemoryCapsule/CURRENT.md`.
 
 ### Fortress/Project is the Source of Truth for Build Artifacts
 

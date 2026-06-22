@@ -3,17 +3,17 @@
 **Purpose:** Current snapshot without chat memory.  
 **Workspace role:** `fortress-design` is **documentation and export prep only**. Builds run in a **separate project** — not in this repo.
 
-**Last Updated:** 2026-06-20
+**Last Updated:** 2026-06-21
 
 ---
 
 ## Current Overall State
 
-**Phase:** Phase 1.2A — Documentation package ready for export to build project
+**Phase:** Phase 1.2A live export + **Ribosome Experiment 06** (DI-pattern docs) handed to Research for review
 
-**Goal:** Agent-facing documentation tight enough for a low-supervision build **in the external build workspace**.
+**Goal:** Agent-facing documentation tight enough for a low-supervision build **in the external build workspace**; Exp06 tests whether plugin-shaped mRNA reduces Era B invention vs composite stubs.
 
-**Current Readiness:** **Ready for export.** All Priority 1 documentation gaps from the June 2026 Reasoning Disclosure collation are closed. Package has not yet been validated by a live build (that happens elsewhere).
+**Current Readiness:** **Phase 1.2A export ready** (unchanged). **Exp06:** plan-mode review complete (`blocked`, 8/10 executability); Research received report; steward review pending (days). Era C shootout **not** started.
 
 ---
 
@@ -91,6 +91,21 @@ No `src/` or `tests/` — expected. Code is built externally.
 
 ---
 
+## Ribosome Experiment 06 (2026-06-21)
+
+| Item | Path |
+|------|------|
+| Research tree | `Fortress/Research/Ribosome/Experiments/006/` |
+| Shootout zip | `Fortress/Research/Ribosome/Experiments/Experiment-06-DI-Pattern-Documentation-2026-06-21.zip` |
+| Plan-mode report | `006/Builds/BUILD-REPORT-2026-06-21-001-GrokBuild.md` |
+| Session log | `Fortress/Logs/Daily-Work-Summary-2026-06-21-2239.md` |
+
+**Next (after steward review):** Era C 3-agent shootout; assign build root outside `fortress-design`.
+
+**Local only (not in git):** `_tmp/experiment-06-staging/` — zip rebuild workspace; regenerate from zip extract if deleted.
+
+---
+
 ## What Happens Next (outside this repo)
 
 1. Copy or unzip export into the **build project**
@@ -101,8 +116,15 @@ No `src/` or `tests/` — expected. Code is built externally.
 
 ---
 
+## Process Changes
+
+**2026-06-21** — Added `Fortress/Logs/` for dated session summaries and decision records. Documented in `PROCESS.md` and `README.md`.
+
+---
+
 ## Maintenance Log
 
 **2026-06-20 (AM)** — Initial STATUS, Rules 10/11, stub fixes.  
 **2026-06-20 (PM)** — Full Priority 1 doc fix pass (Steps 1–10). STATUS refreshed. Export package prepared. Builds explicitly scoped to external project.  
-**2026-06-20 (PM+)** — `BuildDisclosure.md` added; `AGENTS.md` Rule 12 links post-build disclosure as mandatory final step. Export zip refreshed.
+**2026-06-20 (PM+)** — `BuildDisclosure.md` added; `AGENTS.md` Rule 12 links post-build disclosure as mandatory final step. Export zip refreshed.  
+**2026-06-21** — Ribosome Exp06 package + plan-mode report; Research handoff; `Logs/` introduced; commit-ready (exclude `_tmp/`).

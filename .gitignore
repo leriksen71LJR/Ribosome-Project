@@ -15,3 +15,6 @@ Fortress/Project/src/
 Fortress/Project/tests/
 Fortress/Project/obj/
 Fortress/Project/bin/
+
+# Local staging / extracts (canonical artifacts under Fortress/Research/ and Export/)
+_tmp/

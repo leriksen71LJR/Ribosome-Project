@@ -17,6 +17,7 @@ It is about **building the documentation and process discipline** that makes tru
 | `Research/`     | Human-only thinking space. Contains ideas, analysis, backlogs, and long-term vision. | Humans only                | Agents are **forbidden** from reading this |
 | `Export/`       | Clean, versioned shootout zips ready to give to agents                 | Humans                     | Each phase has its own subfolder |
 | `Handoff/`      | Meta-discussion and collaboration notes between human and Grok         | Humans                     | Reduces reliance on chat history |
+| `Logs/`         | Daily work summaries, decision records, process notes (dated filenames) | Humans                     | Session narrative; see `Logs/README.md` |
 | `README.md`     | This file — orientation and maintenance instructions                   | Everyone                   | Start here |
 | `PROCESS.md`    | The full operating model and workflow                                  | Everyone                   | How we actually work |
 | `STATUS.md`     | Living snapshot of current state, open issues, and recent changes      | Everyone                   | Must be kept current |
@@ -38,6 +39,7 @@ Agents must **never** read anything inside `Research/`. All agent-facing content
 - Use `STATUS.md` to see where we currently are.
 - Use `PROCESS.md` to understand how sessions should run.
 - After any significant session (Reasoning Disclosure, build attempt, or major change), update the relevant files so future sessions do not require chat memory.
+- Add a dated entry to `Logs/` when work is significant or a focused session ends (see `Logs/README.md`).
 
 ---
 
