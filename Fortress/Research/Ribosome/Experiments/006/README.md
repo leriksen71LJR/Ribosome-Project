@@ -50,7 +50,8 @@ Era B benchmark: `Fortress/Research/BuildDisclosure/Build-Agent-Disclosure-Respo
 
 | Artifact | Path |
 |----------|------|
-| Shootout package | [`../Experiment-06-DI-Pattern-Documentation-2026-06-21.zip`](../Experiment-06-DI-Pattern-Documentation-2026-06-21.zip) |
-| Plan-mode review (2026-06-21) | [`Builds/BUILD-REPORT-2026-06-21-001-GrokBuild.md`](Builds/BUILD-REPORT-2026-06-21-001-GrokBuild.md) — doc executability, `blocked`, researcher handoff |
+| Shootout package | [Experiment-06-DI-Pattern-Documentation-2026-06-21.zip](../Experiment-06-DI-Pattern-Documentation-2026-06-21.zip) |
+| Plan-mode review (2026-06-21) | [006/Builds/BUILD-REPORT-2026-06-21-001-GrokBuild.md](Builds/BUILD-REPORT-2026-06-21-001-GrokBuild.md) — doc executability, `blocked`, researcher handoff |
+| Experiment 07 (Phase 2.1) | [007/README.md](../007/README.md) |
 
 **Last updated:** 2026-06-21 (final — core + plugins; plan-mode report added)

@@ -13,6 +13,8 @@ A secure, encrypted personal information manager built as a .NET console applica
 **Start here for AI agents:** [AGENTS.md](AGENTS.md)  
 For architecture and component design, see the `.docs/` folder.
 
+**Phase index (Director / steward):** [PHASES.md](PHASES.md) — which agent packages exist under `Fortress/Project/`.
+
 ---
 
 ## Technology Stack
