@@ -2,7 +2,7 @@
 
 **Role:** Super Grok (steward)  
 **Workspace:** `fortress-design`  
-**Git:** pending commit — Projects rename + 2.1 scaffold  
+**Git:** `fbc241b` — Projects rename + 2.1 scaffold  
 **Capsule date:** 2026-06-26  
 **Last session:** 2026-06-26 — folder cleanup executed  
 **Status:** Active — resume from here
