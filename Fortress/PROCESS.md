@@ -40,7 +40,7 @@ The quality of the output is primarily determined by the quality and clarity of 
 
 ## Project Structure and Boundaries
 
-`Fortress/` (the root) and `Fortress/Project/` serve different purposes and must be kept clearly separated.
+`Fortress/` (the root) and `Fortress/Projects/` serve different purposes and must be kept clearly separated.
 
 ### Fortress/ (Root)
 This is the **overall project container**. It holds:
@@ -52,32 +52,32 @@ This is the **overall project container**. It holds:
 
 `Fortress/` is primarily for **humans** managing and evolving the project.
 
-### Fortress/Project/
+### Fortress/Projects/
 This is the **agent product container** — what we give build agents to test. It is not the research lab.
 
-**Phases under Project (flexible model):**
+**Phases under Projects:**
 
 ```
-Fortress/Project/
+Fortress/Projects/
 ├── PHASES.md          ← phase index for Director/steward (lightweight)
-├── 1.2A/              ← current legacy layout (migrate when convenient)
-├── 2.1/               ← when promoted from Research
+├── 1.2A/              ← frozen legacy baseline (`.docs/` layout)
+├── 2.1/               ← `.documents/` + tensions + REGISTRY (Exp06 fork)
 └── …                  ← additional phases as needed
 ```
 
-Each phase folder is a **complete agent package**: `AGENTS.md` at that folder is the **project root** for that shootout. Agents must not be pointed at `Fortress/Project/` without a phase id once multiple phases exist.
+Each phase folder is a **complete agent package**: `AGENTS.md` at that folder is the **project root** for that shootout. Agents must not be pointed at `Fortress/Projects/` without a phase id.
 
 | Layer | Location | Purpose | Rigidity |
 |-------|----------|---------|----------|
 | **Experiments** | `Research/Ribosome/Experiments/` | Prototypes, arguments, REVISED plans | Low — explore freely |
-| **Phases** | `Fortress/Project/{id}/` | Build-agent product | Medium — must be buildable when used |
+| **Phases** | `Fortress/Projects/{id}/` | Build-agent product | Medium — must be buildable when used |
 | **Export** | `Fortress/Export/Phase {id}/` | Zips and prompts for shootouts | High — full copy only when zipping |
 
-**Promotion (Experiment → Phase):** When Research and the Director agree a prototype is ready for agent testing, the steward **copies or moves** the doc tree into `Fortress/Project/{id}/` and mirrors to `Export/`. No fixed ceremony — a log entry or `STATUS.md` line is enough. Experiments stay in Research for history; phases are the "current product."
+**Promotion (Experiment → Phase):** When Research and the Director agree a prototype is ready for agent testing, the steward **copies or moves** the doc tree into `Fortress/Projects/{id}/` and mirrors to `Export/`. No fixed ceremony — a log entry or `STATUS.md` line is enough. Experiments stay in Research for history; phases are the "current product."
 
-**Multiple phases in flight:** Allowed. The shootout prompt must name **one** phase (e.g. "copy `Export/Phase 2.1/Project/`"). `Project/PHASES.md` records which phase is the default for new work if unclear.
+**Multiple phases in flight:** Allowed. The shootout prompt must name **one** phase (e.g. "copy `Export/Phase 2.1/Projects/`"). `Projects/PHASES.md` records which phase is the default for new work if unclear.
 
-**Migration note:** Today's flat `Fortress/Project/*` files are **Phase 1.2A** in spirit. Physical move to `Project/1.2A/` happens when the Director or steward finds a natural pause — not a blocker for Research.
+**Migration (2026-06-26):** `Fortress/Project/` renamed to `Fortress/Projects/`. Legacy 1.2A nested at `Projects/1.2A/` with **internals unchanged**. `Export/Phase 1.2A/` still uses inner folder `Project/` for backward compatibility.
 
 - Everything an agent is allowed to see and modify during a build lives inside the **named phase folder** (and its external shootout copy).
 - Agents must update the **active phase** first; steward syncs back to `fortress-design` after review.
@@ -111,7 +111,7 @@ Most productive sessions follow this pattern:
    - Decision is made whether to proceed to build or do another documentation pass
 
 3. **Build Attempt** (when documentation is ready)
-   - Agent is given the current `Project/` contents + prompt
+   - Agent is given the current `Projects/{phase}/` contents + prompt
    - Agent follows `AGENTS.md` rules strictly
    - All deviations are reported
 
@@ -122,7 +122,7 @@ Most productive sessions follow this pattern:
    - `BUILD_CARTOGRAPHY.md` is generated automatically as the **final mandatory artifact** of every build (see `AGENTS.md` section 8.5)
 
 5. **Documentation Maintenance**
-   - High-value findings are folded back into `Project/` documentation
+   - High-value findings are folded back into `Projects/{phase}/` documentation (steward promotes from reports)
    - `STATUS.md` and other living documents are updated
    - Export zip is refreshed if needed
 
@@ -146,15 +146,15 @@ A `Logs/` folder holds daily work summaries, decision records, and process notes
 
 See [`Logs/README.md`](Logs/README.md). Logs complement `STATUS.md`, `handoff-audit.md`, and `Handoff/MemoryCapsule/CURRENT.md`.
 
-### Fortress/Project is the Source of Truth for Build Artifacts
+### Fortress/Projects is the Source of Truth for Build Artifacts
 
-**`Fortress/Project/{phase}/` is the source of truth for build agent artifacts for that phase.**
+**`Fortress/Projects/{phase}/` is the source of truth for build agent artifacts for that phase.**
 
 - Every file an agent creates or modifies during a build belongs inside the **active phase folder** (or the external shootout copy of it).
-- While only one flat layout exists (`Project/` root = 1.2A), treat that as implicit phase **1.2A** until migration.
+- Default phase for new shootouts: **1.2A** (`Projects/1.2A/`) unless prompt names **2.1** or another id.
 - Nothing should be written to `Research/` during builds. Agents are forbidden from reading `Research/`.
 
-This separation keeps agent product under `Project/` while `Fortress/` holds process, research, and training notes for the Director.
+This separation keeps agent product under `Projects/` while `Fortress/` holds process, research, and training notes for the Director.
 
 ---
 
@@ -172,7 +172,7 @@ Do not let the documented process drift from actual practice. If we start doing 
 
 Treat `PROCESS.md` as the single source of truth for "how Fortress sessions are supposed to run."
 
-**Special note on `Fortress/Project`**: If the boundary or usage rules for `Fortress/Project` change, update the "Fortress/Project is the Source of Truth for Build Artifacts" section immediately. This principle is foundational to keeping agent work contained and reproducible.
+**Special note on `Fortress/Projects`**: If the boundary or usage rules change, update the "Fortress/Projects is the Source of Truth for Build Artifacts" section immediately.
 
 ---
 
@@ -181,12 +181,12 @@ Treat `PROCESS.md` as the single source of truth for "how Fortress sessions are 
 When creating a zip for agent testing, shootouts, or handoff, follow these rules strictly:
 
 ### Core Rule: Full Copy Only
-`Fortress/Export/Phase {id}/` must be a **full, clean copy** of `Fortress/Project/{id}/` at the time of zipping (or of flat `Fortress/Project/` while 1.2A migration is pending). Do not selectively copy files.
+`Fortress/Export/Phase {id}/` must be a **full, clean copy** of `Fortress/Projects/{id}/` at the time of zipping. Do not selectively copy files. Legacy 1.2A export uses inner folder `Project/`; Phase 2.1+ uses `Projects/`.
 
 ### Required Contents
 Every export package must contain:
 
-- `Project/` — Full copy of `Fortress/Project/`
+- `Projects/` or `Project/` — Full copy of the phase folder (see `Projects/PHASES.md` for naming per phase)
 - `Prompts/` — Latest versions of all prompts (especially the current `ReasoningDisclosure-Prompt.md`)
 - `BUILD_CARTOGRAPHY.md` — Must be present in `Project/.docs/Builds/`
 
@@ -201,9 +201,9 @@ Examples:
 - `Fortress-Phase1.2A-Updated-2026-06-21.zip`
 
 ### Steps to Prepare a New Zip
-1. Ensure `Fortress/Project/{id}/` (or flat `Project/` for 1.2A) is in its desired state.
+1. Ensure `Fortress/Projects/{id}/` is in its desired state.
 2. Generate `BUILD_CARTOGRAPHY.md` as the final artifact of the build when applicable.
-3. Copy the entire phase folder into `Fortress/Export/Phase {id}/Project/`.
+3. Copy the entire phase folder into `Fortress/Export/Phase {id}/Projects/` (or `Project/` for legacy 1.2A export).
 4. Copy the latest prompts into `Fortress/Export/Phase X.Y/Prompts/`.
 5. Create the zip using the naming convention above.
 6. Place the zip inside `Fortress/Export/Phase X.Y/`.
@@ -232,5 +232,5 @@ This process ensures that export zips are self-contained, versioned, and do not 
 
 ---
 
-**Last Major Update:** 2026-06-23 (Charter, Experiments vs Phases)  
+**Last Major Update:** 2026-06-26 (Project → Projects rename, 2.1 scaffold)  
 **Maintained By:** Grok (steward); Director (Mr. Bear) sets pace and priorities

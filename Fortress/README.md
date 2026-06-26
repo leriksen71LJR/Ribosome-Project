@@ -13,7 +13,7 @@ It is about **building the documentation and process discipline** that makes tru
 
 | Folder          | Purpose                                                                 | Who Should Read It          | Notes |
 |-----------------|-------------------------------------------------------------------------|-----------------------------|-------|
-| `Project/`      | The complete, agent-visible documentation set. This is what gets zipped and given to agents. | AI agents + humans         | Single source of truth for builds |
+| `Projects/`     | Agent product container — one folder per phase (`1.2A/`, `2.1/`, …). Zipped for shootouts. | AI agents + humans         | See `Projects/PHASES.md` |
 | `Research/`     | Human-only thinking space. Contains ideas, analysis, backlogs, and long-term vision. | Humans only                | Agents are **forbidden** from reading this |
 | `Export/`       | Clean, versioned shootout zips ready to give to agents                 | Humans                     | Each phase has its own subfolder |
 | `Handoff/`      | Meta-discussion and collaboration notes between human and Grok         | Humans                     | Reduces reliance on chat history |
@@ -23,7 +23,7 @@ It is about **building the documentation and process discipline** that makes tru
 | `STATUS.md`     | Living snapshot of current state, open issues, and recent changes      | Everyone                   | Must be kept current |
 
 **Critical Rule:**  
-Agents must **never** read anything inside `Research/`. All agent-facing content lives under `Project/`.
+Agents must **never** read anything inside `Research/`. Agent-facing content lives under `Projects/{phase}/`.
 
 ---
 
@@ -65,5 +65,5 @@ This project only reduces chat memory dependence if these files are actively mai
 
 ---
 
-**Last Updated:** 2026-06-20  
+**Last Updated:** 2026-06-26  
 **Maintained By:** Grok (with human oversight)

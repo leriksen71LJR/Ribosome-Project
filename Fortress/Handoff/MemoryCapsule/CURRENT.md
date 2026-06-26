@@ -2,16 +2,18 @@
 
 **Role:** Super Grok (steward)  
 **Workspace:** `fortress-design`  
-**Git:** `99e010b` — Phase 1.2A Complete  
-**Capsule date:** 2026-06-21  
-**Last session:** 2026-06-21 — user done for day  
+**Git:** pending commit — Projects rename + 2.1 scaffold  
+**Capsule date:** 2026-06-26  
+**Last session:** 2026-06-26 — folder cleanup executed  
 **Status:** Active — resume from here
 
 ---
 
 ## Executive Summary
 
-Phase 1.2A is **complete and validated**: three independent shootout builds (Claude, Grok, Cortex) produced working MVPs from the export package. Documentation scored 7–8/10. The highest-leverage doc gap (`IEncryptionService` per-connection keying) is **fixed** in `CODING_DESIGN.md` and `ARCHITECTURE_SECURITY.md`. Combined build report spec lives in `BuildDisclosure.md` (single file). Git is committed. **Next:** doc fix Item 2 (archive semantics), await Research memory capsule + executive summary, then one more build round before Phase 2 planning with user + Research.
+**2026-06-26:** `Fortress/Project/` renamed to `Fortress/Projects/`. Legacy 1.2A nested at `Projects/1.2A/` (internals frozen). **Phase 2.1** scaffolded at `Projects/2.1/` from Exp06 — `.documents/`, `.codingAgent/`, tensions (6 Resolved + 3 Open), strategies (2), REGISTRY split. Exp07 closed; Exp08 exploration only. Living state updated: `STATUS.md`, `PROCESS.md`, `README.md`, `Projects/PHASES.md`. **Next:** plan-mode read-through on 2.1; `Export/Phase 2.1/` zip when Director ready.
+
+Phase 1.2A remains **validated** baseline (three shootouts, 7–8/10). Default export path unchanged: `Export/Phase 1.2A/Project/`.
 
 ---
 

@@ -1,6 +1,6 @@
 # Experiment 07 — Phase 2.1 Documentation Architecture
 
-**Status:** **Director final call** on Decisions 1–3 — prototype planning cleared; fork timing at Director discretion  
+**Status:** **Closed** — Director final call on Decisions 1–3; prototype forked to `Fortress/Projects/2.1/` (2026-06-26)  
 **Date:** 2026-06-23  
 **Builds on:** [006/README.md](../006/README.md) (DI-pattern plugins)
 

@@ -3,7 +3,9 @@
 **This folder is for human researchers only.**
 
 ## Purpose
+
 `Research/` is our private thinking space. It contains:
+
 - Emerging models and concepts (e.g. Ribosome Model)
 - Boundary definitions and principles
 - Tooling experiments (e.g. Reasoning Disclosure, Build Disclosure)
@@ -13,19 +15,18 @@
 ## Rules
 
 - **Do not give anything in this folder to build agents.**
-- Agents should only ever see curated content from the `Project/` folder.
-- When an idea is ready for use by agents, it must be **promoted** out of `Research/` into `Project/`, `Workflows/`, `Procedures/`, or `Evaluation/`.
+- Agents should only ever see curated content from `Fortress/Projects/{phase}/`.
+- When an idea is ready for agent testing, steward **promotes** it into `Projects/{id}/` and mirrors to `Export/`.
 - Keep this folder clean and focused on active thinking.
 
 ## Current Key Documents
 
-- `Ribosome-Model.md` — North star metaphor
-- `Ribosome/Experiments/` — Restructuring experiments (e.g. **Experiment 03** composite `.docs/` layout)
-- `BuildDisclosure/Build-Agent-Disclosure-Responses-2026-06-21.md` — Shootout disclosure synthesis + §9 Ribosome/pseudocode implications
-- `DocumentationAsWorkflow-Research.md` — Extended Ribosome / workflow research
-- `DocumentationBoundaries.md` — Core boundary principle between Research and Project
-- `ReasoningDisclosure-Prompt.md` — Legacy pre-build disclosure prompt (superseded by `Project/BuildDisclosure.md`)
-- `BuildDisclosure/` — **Post-build** collected build reports from shootouts (single-file format; legacy paired files archived)
-- `Backlog/` — Captured ideas for future phases
+| Area | Path |
+|------|------|
+| Ribosome model | `Ribosome-Model.md` |
+| Experiments | `Ribosome/Experiments/` — 006 (DI baseline), 007 (Phase 2.1 closed), 008 (Phase 2.2 exploration) |
+| Active restructure plan | `Phases/PHASE_2_1_PROJECTS_RESTRUCTURE_PLAN.md` |
+| Build disclosure synthesis | `BuildDisclosure/Build-Agent-Disclosure-Responses-2026-06-21.md` |
+| Backlog | `Backlog/Backlog.md` |
 
-_Last updated: 2026-06-21_
+_Last updated: 2026-06-26_
