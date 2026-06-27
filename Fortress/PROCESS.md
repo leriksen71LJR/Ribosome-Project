@@ -146,6 +146,32 @@ A `Logs/` folder holds daily work summaries, decision records, and process notes
 
 See [`Logs/README.md`](Logs/README.md). Logs complement `STATUS.md`, `handoff-audit.md`, and `Handoff/MemoryCapsule/CURRENT.md`.
 
+### Preflight reports
+
+A **preflight** is a steward-written readiness check before you hand something off — a phase package, an export, an experiment, whatever. Not a form for you to fill in; the steward inspects the repo and writes the report.
+
+**How to request:** say something like *"Let's get a preflight report for Phase 2.1"* or *"preflight the 1.2A export"*.
+
+**Steward flow:**
+
+1. **Clarify (optional)** — ask a few short questions if the subject or goal isn't obvious (e.g. shootout vs doc-only review, which phase path). **You can skip this** with *"just run it"* or a clear subject.
+2. **Check** — read files, grep for stale paths, verify layout — using the kinds of checks below that apply.
+3. **Report** — write a finished markdown file to `Logs/Preflight-{Subject}-{YYYY-MM-DD}-{HHmm}.md` with a **verdict** at the top: `Ready` · `Ready with conditions` · `Not ready`, then findings, blockers, and one recommended next step.
+
+**Kinds of things to check** (use what fits the subject; skip the rest):
+
+| Kind | Examples |
+|------|----------|
+| **Subject clear** | What folder, experiment, or export; what decision this gates |
+| **Artifacts exist** | Expected files/folders on disk (e.g. `AGENTS.md`, `.documents/`, `Builds/`) |
+| **Decisions recorded** | Relevant calls written down, not only in chat |
+| **Stale references** | Old paths (`Fortress/Project/`, `adr/`, `006/`) where the new layout differs |
+| **Caps and scope** | Prototype limits respected (e.g. 2.1 tension/strategy counts) |
+| **Export / shootout** | Mirror and prompt exist if you're about to zip or run agents |
+| **Git (informational)** | Uncommitted or unpushed changes — note, don't treat as automatic blocker |
+
+**Questions in the report:** only when the steward truly can't tell (e.g. "shootout or plan-mode only?"). Otherwise infer and state assumptions in the report.
+
 ### Fortress/Projects is the Source of Truth for Build Artifacts
 
 **`Fortress/Projects/{phase}/` is the source of truth for build agent artifacts for that phase.**

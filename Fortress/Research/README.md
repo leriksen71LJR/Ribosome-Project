@@ -28,5 +28,6 @@
 | Active restructure plan | `Phases/PHASE_2_1_PROJECTS_RESTRUCTURE_PLAN.md` |
 | Build disclosure synthesis | `BuildDisclosure/Build-Agent-Disclosure-Responses-2026-06-21.md` |
 | Backlog | `Backlog/Backlog.md` |
+| Preflight | [`PROCESS.md`](../PROCESS.md) — Preflight reports section |
 
 _Last updated: 2026-06-26_

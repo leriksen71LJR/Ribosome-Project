@@ -19,8 +19,11 @@ Use clear, descriptive names with **date and time in 24-hour format**:
 | Daily work summary | `Daily-Work-Summary-2026-06-21-1251.md` |
 | Decision record | `Phase2-Decisions-2026-06-21-1430.md` |
 | Process note | `Process-Export-Zip-Rules-2026-06-21-0900.md` |
+| Steward preflight | `Preflight-Phase-2.1-2026-06-26-1300.md` |
 
 Format: `{Topic}-{YYYY-MM-DD}-{HHmm}.md`
+
+**Preflight reports:** See [`PROCESS.md`](../PROCESS.md) — Preflight reports. Steward saves completed runs here.
 
 ## Relationship to other state files
 
