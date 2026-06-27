@@ -2,7 +2,7 @@
 
 **Purpose**  
 This backlog captures ideas, improvements, open questions, and potential directions for the Fortress documentation system and Ribosome Model.  
-It lives in `Research/` because this is human thinking space — not yet ready for agents.
+It lives in `Records/Backlog/` — human thinking space, not agent-facing.
 
 ## How to Use This Backlog
 
@@ -33,7 +33,7 @@ It lives in `Research/` because this is human thinking space — not yet ready f
 - **Complexity**: Low / Medium / High
 - **Status**: Proposed / Researching / Ready for Phase X / Done
 
-_Last updated: 2026-06-26 (Session 002)_
+_Last updated: June 20, 2026_
 
 ## New Items from Reasoning Disclosure Analysis (2026-06-20)
 
@@ -43,21 +43,3 @@ _Last updated: 2026-06-26 (Session 002)_
 | 013 | Stale Examples Override Current Rules | High | Low-Medium | 2.1 | New |
 | 014 | Missing PHASE_1_1_IMPROVEMENTS.md Specification | High | Low | 2.1 | New |
 | 015 | Reduce Conceptual/Prose-Heavy Language in Core Documents | Medium-High | Medium | 2.2+ | New |
-
----
-
-## Phase 2.1 Closure (Session 002, 2026-06-26)
-
-Phase 2.1 research work is considered complete from the Research layer perspective (see `Phases/2.1/Phase-2.1-Preflight-2026-06-25.md`).
-
-**Locked Decisions (1-4):**
-- Tensions/ as unified model
-- COMPONENTS = Recipe+Contract, REGISTRY = Connector (Structure Builder)
-- `.documents/` + `.codingAgent/` two-zone model
-- "Specification Pipeline" as the name for the 3-layer pattern
-
-**Status:** Ready with Conditions (formal Steward review / Decision-04 handoff pending).
-
-**Next Research Focus:** Phase 2.2 ideas (Memory Palaces, specialized agents across the Specification Pipeline, 5 strategic paths, domain-specific pipelines).
-
-Many original backlog items 001-015 have been addressed via Experiment 07 outcomes and the PHASE_2_1_PROJECTS_RESTRUCTURE_PLAN. New Phase 2.2 items should be captured as individual Idea files rather than extending this table.

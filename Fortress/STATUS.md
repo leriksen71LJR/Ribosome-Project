@@ -9,11 +9,11 @@
 
 ## Current Overall State
 
-**Phase:** **1.2A** default export (frozen under `Projects/1.2A/`). **2.1** scaffolded under `Projects/2.1/` (Exp06 fork + tensions/REGISTRY split).
+**Phase:** **1.2A** default export (frozen under `Phases/1.2A/Project/`). **2.1** scaffolded under `Phases/2.1/Project/` (Exp06 fork + tensions/REGISTRY split).
 
 **Goal:** Train Director via agent shootouts; Phase 2.1 tests `.documents/` / `.codingAgent/` two-zone model and maintenance proposals loop.
 
-**Readiness:** 1.2A export unchanged (`Export/Phase 1.2A/Project/`). **2.1** ready for plan-mode read-through; shootout zip not yet generated.
+**Readiness:** 1.2A export at `Phases/1.2A/Export/`. **2.1** hygiene complete; export mirror at `Phases/2.1/Export/Project/` + `Prompts/Build-Prompt.md`. Ready for shootout (zip optional).
 
 ---
 
@@ -21,11 +21,11 @@
 
 | Change | Detail |
 |--------|--------|
-| Rename | `Fortress/Project/` → `Fortress/Projects/` |
-| 1.2A | Nested at `Projects/1.2A/` — **internals untouched** |
-| 2.1 | Scaffolded from Exp06 — `.documents/`, `.codingAgent/`, tensions, strategies, REGISTRY |
-| Exp07 | Decisions 1–3 **closed** (Director final call) |
-| Exp08 | Phase 2.2 exploration only — **not promoted** |
+| Canonical tree | Five root folders: `Archive/`, `Core/`, `Ideas/`, `Phases/`, `Records/` |
+| Retired | `Research/`, top-level `Logs/`, `Handoff/`, `Projects/`, top-level `Export/` |
+| Phases layout | `Phases/{id}/Project/` + `Phases/{id}/Export/` (1.2A and 2.1 aligned) |
+| 2.1 prep | Decisions, Plans, Guidance under `Phases/2.1/Project/`; preflight at phase root |
+| Item 4 | `Archive/Research-import/` deduped; phase history → `Records/Phases/` |
 
 ---
 
@@ -34,21 +34,22 @@
 | This repo (`fortress-design`) | External build project |
 |-------------------------------|------------------------|
 | Doc authoring & tightening | Implementation (src/, tests/) |
-| `Fortress/Projects/` source of truth | Receives export zip or Projects copy |
-| `Fortress/Export/` packages | Agents run build prompt there |
-| `Fortress/Research/` human thinking | Build reports synced back |
+| `Phases/{id}/Project/` source of truth | Receives export copy or zip |
+| `Phases/{id}/Export/` shootout packages | Agents run build prompt there |
+| `Records/Logs/` session trail | Build reports synced back |
 
 ---
 
 ## Process Changes
 
-- **2026-06-26:** Projects container rename + 2.1 scaffold. See `Logs/Projects-Rename-and-Repo-Hygiene-2026-06-26.md`.
+- **2026-06-26:** Full structure migration (Passes 0–4). See `Records/Logs/Fortress-Structure-Migration-Pass0-3-2026-06-26.md`.
 - **2026-06-23:** Charter + Experiments vs Phases in `PROCESS.md`.
 
 ---
 
 ## Next Steps
 
-1. Plan-mode or small read-through on `Projects/2.1/`
-2. Generate `Export/Phase 2.1/` zip when Director ready
-3. Phase 2.2 remains Research-only (Exp08)
+1. Plan-mode or read-through on `Phases/2.1/Project/`
+2. Fix 2.1 PLUGIN `adr/` → tensions paths; update `Builds/README.md`
+3. Refresh `Phases/2.1/Export/` when Director ready for shootout
+4. Phase 2.2 exploration stays in `Phases/2.2/` (not promoted)

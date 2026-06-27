@@ -19,9 +19,9 @@ When starting in a new chat, **you must** follow this sequence:
    This is the deep memory transfer. It contains the philosophy, key decisions, hard lessons, working style expectations, and risks worth protecting. Read it with attention.
 
 4. Read `STRUCTURE.md`.  
-   This explains how the `Research/` folder is organized.
+   This explains how `Fortress/` is organized.
 
-5. (Optional but recommended) Review recent work in `Export/` (now `Records/Export/`):
+5. (Optional but recommended) Review recent work in `Records/Export/`:
    - `Item-1-IEncryptionService-Design-Spec-2026-06-21.md` (current active specification)
    - `Claude-Phase1.2-Full-Quantum-Analysis-2026-06-21.md` (example of deep analysis style)
 

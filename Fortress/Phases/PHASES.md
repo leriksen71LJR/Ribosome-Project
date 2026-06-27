@@ -1,18 +1,18 @@
-# Fortress Projects — Agent Phases
+# Fortress Phases — Agent Packages
 
-**Audience:** Director (Mr. Bear), steward, Research — not required reading for build agents.
+**Audience:** Director (Mr. Bear), steward — not required reading for build agents.
 
-Experiments live under `Fortress/Research/Ribosome/Experiments/`. When one is ready for agent testing, promote it here as a **phase**.
+Historical experiments live under `Fortress/Archive/Experiments/`. When one is ready for agent testing, promote it to `Phases/{id}/Project/`.
 
 ---
 
 ## Phases (living table)
 
-| Phase | Location | Status | Notes |
-|-------|----------|--------|-------|
-| **1.2A** | `Fortress/Projects/1.2A/` | Default export | Frozen legacy baseline (`.docs/` layout) |
-| **2.1** | `Fortress/Projects/2.1/` | Scaffolded | `.documents/` + tensions + REGISTRY split (Exp06 fork) |
-| **2.2** | `Fortress/Projects/2.2/` (planned) | Exploration only | [Exp08](../Research/Ribosome/Experiments/008/README.md) — after 2.1 learnings |
+| Phase | Project (source) | Export | Status | Notes |
+|-------|------------------|--------|--------|-------|
+| **1.2A** | `Phases/1.2A/Project/` | `Phases/1.2A/Export/` | Default export | Frozen legacy baseline (`.docs/` layout) |
+| **2.1** | `Phases/2.1/Project/` | `Phases/2.1/Export/` | Scaffolded | `.documents/` + tensions + REGISTRY (Exp06 fork) |
+| **2.2** | — | — | Exploration only | Idea files under `Phases/2.2/` — not a build package yet |
 
 Update when adding phases or changing the default shootout. A log line or `STATUS.md` bump is enough.
 
@@ -21,13 +21,18 @@ Update when adding phases or changing the default shootout. A log line or `STATU
 ## Shootout reminder
 
 1. Name the phase in the prompt.
-2. Copy `Export/Phase {id}/Projects/` (2.1+) or `Export/Phase 1.2A/Project/` (legacy) to an external shootout root.
-3. Agent project root = folder with that phase's `AGENTS.md`.
+2. Copy `Phases/{id}/Export/Project/` to an external shootout root.
+3. Agent project root = folder containing that phase's `AGENTS.md`.
 
-See `Fortress/PROCESS.md` — Charter and Phases.
+See `Fortress/PROCESS.md` — Charter and export rules.
 
 ---
 
-## Migration (2026-06-26)
+## Phase folder convention
 
-`Fortress/Project/` renamed to `Fortress/Projects/`. Legacy 1.2A content nested under `Projects/1.2A/` unchanged inside.
+```
+Phases/{id}/
+├── Project/     ← living agent package (all prep for the coding agent)
+├── Export/      ← mirror + Prompts/ + zip when shooting out
+└── *.md         ← optional steward meta at phase root (e.g. preflight)
+```

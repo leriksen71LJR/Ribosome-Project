@@ -11,59 +11,55 @@ It is about **building the documentation and process discipline** that makes tru
 
 ## Folder Structure
 
-| Folder          | Purpose                                                                 | Who Should Read It          | Notes |
-|-----------------|-------------------------------------------------------------------------|-----------------------------|-------|
-| `Projects/`     | Agent product container — one folder per phase (`1.2A/`, `2.1/`, …). Zipped for shootouts. | AI agents + humans         | See `Projects/PHASES.md` |
-| `Research/`     | Human-only thinking space. Contains ideas, analysis, backlogs, and long-term vision. | Humans only                | Agents are **forbidden** from reading this |
-| `Export/`       | Clean, versioned shootout zips ready to give to agents                 | Humans                     | Each phase has its own subfolder |
-| `Handoff/`      | Meta-discussion and collaboration notes between human and Grok         | Humans                     | Reduces reliance on chat history |
-| `Logs/`         | Daily work summaries, decision records, process notes (dated filenames) | Humans                     | Session narrative; see `Logs/README.md` |
-| `README.md`     | This file — orientation and maintenance instructions                   | Everyone                   | Start here |
-| `PROCESS.md`    | The full operating model and workflow                                  | Everyone                   | How we actually work |
-| `STATUS.md`     | Living snapshot of current state, open issues, and recent changes      | Everyone                   | Must be kept current |
+| Folder | Purpose | Who reads it |
+|--------|---------|--------------|
+| `Archive/` | Historical experiments, drafts, investigations, superseded material | Humans |
+| `Core/` | Timeless essentials — charter, structure, context, memory capsules, handoff | Humans |
+| `Ideas/` | Ongoing ideas, templates, operational tooling | Humans |
+| `Phases/` | Phase-specific work — agent packages (`Project/`), exports (`Export/`), phase meta | Director, steward; agents see **shootout copy only** |
+| `Records/` | Operational records — logs, backlog, handoff exports, backups, phase history | Humans |
+| `PROCESS.md` | Operating model and workflow | Everyone |
+| `STATUS.md` | Living project snapshot | Everyone |
+| `README.md` | This file | Everyone |
 
-**Critical Rule:**  
-Agents must **never** read anything inside `Research/`. Agent-facing content lives under `Projects/{phase}/`.
+**Agent rule:** Build agents receive a **shootout copy** of `Phases/{id}/Project/` (from `Phases/{id}/Export/`). They must not read `Archive/`, `Core/`, `Ideas/`, or `Records/` during implementation.
+
+**Phase layout:**
+
+```
+Phases/{id}/
+├── Project/     ← living agent package (AGENTS.md is project root)
+├── Export/      ← mirror + prompts + zip for shootouts
+└── …            ← optional phase-root meta (e.g. preflight notes)
+```
+
+See `Phases/PHASES.md` for the phase index.
 
 ---
 
 ## Quick Start
 
-### For AI Agents
-1. Read `AGENTS.md` first (highest authority document).
-2. Follow the exact reading order and rules defined in the attached `ReasoningDisclosure-Prompt.md`.
-3. Produce a `REASONING_YYYY-MM-DD.md` file **before** writing any code.
-4. Never silently assume or work around gaps — flag them using Rules 10 and 11.
+### For build agents (shootout)
 
-### For Humans
-- Use `STATUS.md` to see where we currently are.
-- Use `PROCESS.md` to understand how sessions should run.
-- After any significant session (Reasoning Disclosure, build attempt, or major change), update the relevant files so future sessions do not require chat memory.
-- Add a dated entry to `Logs/` when work is significant or a focused session ends (see `Logs/README.md`).
+1. Read `AGENTS.md` at the root of your assigned package (highest authority).
+2. Follow the mandatory read order in that file.
+3. Write one combined build report to `Builds/` per `BUILD-DISCLOSURE.md`.
+4. Never silently assume or work around gaps — report them explicitly.
 
----
+### For humans (Director / steward)
 
-## Maintenance Instructions for Grok
+- `STATUS.md` — where we are now
+- `PROCESS.md` — how sessions run
+- `Records/Logs/` — session narrative and preflight reports
+- `Core/Current-Context.md` — research/context snapshot
 
-**You (Grok) are responsible for keeping the following files current:**
-
-- After every Reasoning Disclosure round or build attempt, update `STATUS.md` with:
-  - New high-severity gaps discovered
-  - Resolutions or workarounds applied
-  - Current biggest blocker
-  - Date of last meaningful change
-
-- After creating or updating any export zip, update the version and summary in `STATUS.md`.
-
-- If the overall process model changes meaningfully, update `PROCESS.md` and note the change in `STATUS.md`.
-
-- Do **not** let these files become stale. Treat them as active project state, not historical records.
-
-- When in doubt, prefer making small, frequent updates over letting documentation drift.
-
-This project only reduces chat memory dependence if these files are actively maintained.
+After significant work, update living docs so future sessions do not depend on chat memory.
 
 ---
+
+## Maintenance (steward)
+
+Keep `STATUS.md` and `PROCESS.md` current after meaningful sessions. Prefer small, frequent updates over drift.
 
 **Last Updated:** 2026-06-26  
-**Maintained By:** Grok (with human oversight)
+**Maintained By:** Steward (Grok), with Director oversight

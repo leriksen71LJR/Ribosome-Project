@@ -20,10 +20,10 @@ The goal is to keep durable knowledge and thinking outside of any single chat se
 
 **At the beginning of every new session or major task in this chat, you MUST follow this sequence:**
 
-1. **First**, read `Research/Current-Context.md` in full.
+1. **First**, read `Fortress/Core/Current-Context.md` in full.
 2. Use the information in `Current-Context.md` as your **primary working context** for this session.
 3. Only consult the full chat history if the task explicitly requires historical reasoning or previous decisions **not captured** in `Current-Context.md`.
-4. At the end of any significant work or decision, **update** `Research/Current-Context.md` with new decisions, open questions, changed state, or important context.
+4. At the end of any significant work or decision, **update** `Fortress/Core/Current-Context.md` with new decisions, open questions, changed state, or important context.
 
 **Purpose:** This protocol exists to keep responses fast, focused, and grounded in current reality rather than re-deriving state from a very long conversation history. It is a core mechanism for making this research chat sustainable long-term.
 
@@ -55,12 +55,12 @@ The goal is to keep durable knowledge and thinking outside of any single chat se
 
 ---
 
-## Output Location: `Research/Records/Export/` (under Records/)
+## Output Location: `Fortress/Records/Export/`
 
 When this chat produces analysis, reviews, or recommendations that need to be shared with the local project, they should be written into:
 
 ```
-Research/Records/Export/
+Fortress/Records/Export/
 ```
 
 Examples of what belongs here:

@@ -11,9 +11,9 @@ This is **not** a final design or exhaustive audit. It is a high-signal checkpoi
 3. Be brutally honest about gaps.
 4. End with a clear **Verdict**.
 5. Save the completed report in:
-   - `Export/` when it is intended for Steward/Director review or handoff.
-   - `Ideas/` (initially) when still internal to Research.
-   - `Logs/` only for very raw working notes.
+   - `Records/Logs/` for steward preflights (see `PROCESS.md`).
+   - `Phases/{id}/` at phase root for phase-specific research handoff notes.
+   - `Ideas/` when still internal exploration.
 6. Update `Current-Context.md` or the relevant Backlog item with the outcome.
 
 ---
