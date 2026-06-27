@@ -1,11 +1,7 @@
-# Export — Phase 2.1
+# Moved — Phase 2.1 export
 
-**Status:** Stub — full `Projects/` mirror and zip pending Director shootout schedule.
+Export for Phase 2.1 now lives with the phase:
 
-When ready:
+**`Fortress/Phases/2.1/Export/`**
 
-1. Copy `Fortress/Projects/2.1/` to `Export/Phase 2.1/Projects/`
-2. Add `Prompts/Build-Prompt.md`
-3. Zip per `Fortress/PROCESS.md` naming convention
-
-Shootout instruction: copy `Export/Phase 2.1/Projects/` to external build root.
+This top-level stub remains only so old links do not 404. Do not add shootout artifacts here.
